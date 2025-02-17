@@ -8,8 +8,8 @@ const destroyConnSendOk = require("../../lib/destroyConnSendOk");
 const getSqlConnection = require("../../lib/getSqlConnection");
 const config = require("../../etc/config");
 router.post("/", async function (req, res, next) {
-  const username = req.body.username;
-  const password = req.body.password;
+  const username = req.body.Username;
+  const password = req.body.Password;
   const conn = await getSqlConnection();
   const mem = await redis.createClient().connect();
   var query = `
@@ -79,11 +79,11 @@ router.post("/", async function (req, res, next) {
       Password=${sqlPassword};
       `;
       return destroyConnSendOk(conn, res, 201, {
-        sid: id,
-        sql_connection_string: sqlConnectionString,
-        aws_access_key_id: config.AWS_ACCESS_KEY_ID,
-        aws_secret_access_key: config.AWS_SECRET_ACCESS_KEY,
-        aws_s3_bucket: config.AWS_S3_BUCKET,
+        SessionId: id,
+        SqlConnectionString: sqlConnectionString,
+        AwsAccessKeyId: config.AWS_ACCESS_KEY_ID,
+        AwsSecretAccessKey: config.AWS_SECRET_ACCESS_KEY,
+        AwsS3Bucket: config.AWS_S3_BUCKET,
       });
     } catch (err) {
       await mem.disconnect();
