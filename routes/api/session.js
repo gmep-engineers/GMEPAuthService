@@ -108,14 +108,14 @@ router.delete("/all", async function (req, res, next) {
   if (!employeeId) {
     return destroyConnSendOk(conn, res, 201, {});
   }
-  var query = `SELECT id FROM sessions WHERE user_id = ?`;
+  var query = `SELECT id FROM sessions WHERE employee_id = ?`;
   try {
     const [result] = await conn.query(query, [employeeId]);
     const sidList = [];
     for (i = 0; i < result.length; i++) {
       sidList.push(result[i]["id"]);
     }
-    var query = `DELETE FROM sessions WHERE user_id = ?`;
+    var query = `DELETE FROM sessions WHERE employee_id = ?`;
     await conn.query(query, [employeeId]);
     return destroyConnSendOk(conn, res, 201, { sid_list: sidList });
   } catch (err) {
