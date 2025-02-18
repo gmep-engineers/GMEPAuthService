@@ -113,7 +113,7 @@ router.delete("/all", async function (req, res, next) {
   var query = `DELETE FROM sessions WHERE employee_id = ?`;
   try {
     await conn.query(query, [employeeId]);
-    return destroyConnSendOk(conn, res, 201, { sid_list: sidList });
+    return destroyConnSendOk(conn, res, 201, {});
   } catch (err) {
     return destroyConnSendErr(conn, res, 500, "server error", "ISlKf9");
   }
