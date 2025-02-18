@@ -89,31 +89,37 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-router.delete("/", async function (req, res, next) {
-  const sid = req.body.SessionId;
+router.delete("/:SessionId", async function (req, res, next) {
+  const sid = req.params.SessionId;
   const conn = await getSqlConnection();
+  const employeeId = await getUserIdFromSessionId(conn, sid);
+  if (!employeeId) {
+    return destroyConnSendOk(conn, res, 400, {
+      message: `no session found for ${sid}`,
+    });
+  }
   var query = `DELETE FROM sessions WHERE id = ?`;
   try {
     await conn.query(query, [sid]);
-    return destroyConnSendOk(conn, res, 201, {});
+    return destroyConnSendOk(conn, res, 201, { EmployeeId: employeeId });
   } catch (err) {
     return destroyConnSendErr(conn, res, 500, "server error", "PGV6dU");
   }
 });
 
-router.delete("/all", async function (req, res, next) {
+router.delete("/all/:SessionId", async function (req, res, next) {
   const conn = await getSqlConnection();
-  const sid = req.body.SessionId;
+  const sid = req.params.SessionId;
   const employeeId = await getUserIdFromSessionId(conn, sid);
   if (!employeeId) {
-    return destroyConnSendOk(conn, res, 201, {
+    return destroyConnSendOk(conn, res, 400, {
       message: `no session found for ${sid}`,
     });
   }
   var query = `DELETE FROM sessions WHERE employee_id = ?`;
   try {
     await conn.query(query, [employeeId]);
-    return destroyConnSendOk(conn, res, 201, {});
+    return destroyConnSendOk(conn, res, 201, { EmployeeId: employeeId });
   } catch (err) {
     return destroyConnSendErr(conn, res, 500, "server error", "ISlKf9");
   }
