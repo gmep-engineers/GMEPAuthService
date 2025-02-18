@@ -106,7 +106,9 @@ router.delete("/all", async function (req, res, next) {
   const sid = req.body.SessionId;
   const employeeId = await getUserIdFromSessionId(conn, sid);
   if (!employeeId) {
-    return destroyConnSendOk(conn, res, 201, {});
+    return destroyConnSendOk(conn, res, 201, {
+      message: `no session found for ${sid}`,
+    });
   }
   var query = `DELETE FROM sessions WHERE employee_id = ?`;
   try {
