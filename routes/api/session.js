@@ -104,8 +104,8 @@ router.delete("/", async function (req, res, next) {
 router.delete("/all", async function (req, res, next) {
   const conn = await getSqlConnection();
   const sid = req.body.SessionId;
-  const userId = await getUserIdFromSessionId(conn, sid);
-  if (!userId) {
+  const employeeId = await getUserIdFromSessionId(conn, sid);
+  if (!employeeId) {
     return destroyConnSendOk(conn, res, 201, {});
   }
   var query = `SELECT id FROM sessions WHERE user_id = ?`;
