@@ -1,17 +1,16 @@
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcrypt");
-const redis = require("redis");
 const { v4: uuidv4 } = require("uuid");
 const destroyConnSendErr = require("../../lib/destroyConnSendErr");
 const destroyConnSendOk = require("../../lib/destroyConnSendOk");
 const getSqlConnection = require("../../lib/getSqlConnection");
 const config = require("../../etc/config");
+const getUserIdFromSessionId = require("../../lib/getUserIdFromSessionId");
 router.post("/", async function (req, res, next) {
   const username = req.body.Username;
   const password = req.body.Password;
   const conn = await getSqlConnection();
-  const mem = await redis.createClient().connect();
   var query = `
     SELECT 
     contacts.first_name,
@@ -38,7 +37,7 @@ router.post("/", async function (req, res, next) {
   `;
   var passhash = "";
   var employeeId = "";
-  var accessLevel = "0";
+  var accessLevelId = 0;
   var extension = "";
   try {
     var [results] = await conn.query(query, [username]);
@@ -48,7 +47,6 @@ router.post("/", async function (req, res, next) {
       extension = results[0]["extension"];
     }
   } catch (err) {
-    await mem.disconnect();
     return destroyConnSendErr(conn, res, 500, "server error", "Ood8lN");
   }
   var compareResult = await bcrypt.compare(password, passhash);
@@ -60,9 +58,6 @@ router.post("/", async function (req, res, next) {
     const id = uuidv4();
     try {
       await conn.query(query, [id, employeeId, "_", "computer"]);
-      await mem.set(id, employeeId);
-      await mem.set(employeeId, accessLevel);
-      await mem.disconnect();
       var sqlHost = config.SQL_HOST_DEV;
       var sqlDatabase = config.SQL_DB;
       var sqlUser = config.SQL_USER;
@@ -84,13 +79,12 @@ router.post("/", async function (req, res, next) {
         AwsAccessKeyId: config.AWS_ACCESS_KEY_ID,
         AwsSecretAccessKey: config.AWS_SECRET_ACCESS_KEY,
         AwsS3Bucket: config.AWS_S3_BUCKET,
+        AccessLevelId: accessLevelId,
       });
     } catch (err) {
-      await mem.disconnect();
       return destroyConnSendErr(conn, res, 500, "server error", "Uk00W3");
     }
   } else {
-    await mem.disconnect();
     return destroyConnSendErr(conn, res, 403, "incorrect password", "kcn0EU");
   }
 });
@@ -98,14 +92,9 @@ router.post("/", async function (req, res, next) {
 router.delete("/", async function (req, res, next) {
   const sid = req.body.sid;
   const conn = await getSqlConnection();
-  const mem = await redis.createClient().connect();
   try {
-    const employeeId = await mem.get(sid);
-    await mem.del(sid);
-    await mem.del(employeeId);
     var query = `DELETE FROM sessions WHERE id = ?`;
     await conn.query(query, [sid]);
-    await mem.disconnect();
     return destroyConnSendOk(conn, res, 201, {});
   } catch (err) {
     return destroyConnSendErr(conn, res, 500, "server error", "PGV6dU");
@@ -115,23 +104,21 @@ router.delete("/", async function (req, res, next) {
 router.delete("/all", async function (req, res, next) {
   const conn = await getSqlConnection();
   const sid = req.body.sid;
-  const mem = await redis.createClient().connect();
+  const userId = await getUserIdFromSessionId(sid);
+  if (!userId) {
+    return destroyConnSendOk(conn, res, 201, {});
+  }
   var query = `SELECT id FROM sessions WHERE user_id = ?`;
   try {
-    const employeeId = await mem.get(sid);
     const [result] = await conn.query(query, [employeeId]);
     const sidList = [];
     for (i = 0; i < result.length; i++) {
       sidList.push(result[i]["id"]);
-      await mem.del(result[i]["id"]);
     }
-    await mem.del(employeeId);
     var query = `DELETE FROM sessions WHERE user_id = ?`;
     await conn.query(query, [employeeId]);
-    await mem.disconnect();
     return destroyConnSendOk(conn, res, 201, { sid_list: sidList });
   } catch (err) {
-    await mem.disconnect();
     return destroyConnSendErr(conn, res, 500, "server error", "ISlKf9");
   }
 });
