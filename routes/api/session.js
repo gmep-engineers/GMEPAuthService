@@ -90,7 +90,7 @@ router.post("/", async function (req, res, next) {
 });
 
 router.delete("/", async function (req, res, next) {
-  const sid = req.body.sid;
+  const sid = req.body.SessionId;
   const conn = await getSqlConnection();
   try {
     var query = `DELETE FROM sessions WHERE id = ?`;
@@ -103,8 +103,8 @@ router.delete("/", async function (req, res, next) {
 
 router.delete("/all", async function (req, res, next) {
   const conn = await getSqlConnection();
-  const sid = req.body.sid;
-  const userId = await getUserIdFromSessionId(sid);
+  const sid = req.body.SessionId;
+  const userId = await getUserIdFromSessionId(conn, sid);
   if (!userId) {
     return destroyConnSendOk(conn, res, 201, {});
   }
