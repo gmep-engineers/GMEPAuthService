@@ -18,7 +18,8 @@ router.post("/", async function (req, res, next) {
     employees.passhash,
     employees.id as employee_id,
     employees.employee_access_level_id,
-    employee_types.employee_type,
+    employee_titles.employee_title_id,
+    employee_departments.employee_department_id,
     email_addresses.email_address,
     phone_numbers.phone_number,
     phone_numbers.calling_code,
@@ -30,7 +31,6 @@ router.post("/", async function (req, res, next) {
     LEFT JOIN email_addr_entity_rel ON email_addr_entity_rel.entity_id = entities.id
     LEFT JOIN phone_numbers ON phone_number_entity_rel.phone_number_id = phone_numbers.id
     LEFT JOIN email_addresses ON email_addr_entity_rel.email_address_id = email_addresses.id
-    LEFT JOIN employee_types ON employee_types.id = employees.employee_type_id
     WHERE employees.username = ?
     AND employees.termination_date IS NULL
   `;
@@ -53,7 +53,7 @@ router.post("/", async function (req, res, next) {
       emailAddress = results[0]["email_address"];
       phoneNumber = results[0]["phone_number"];
       if (phoneNumber) {
-        phoneNumber = `(${phoneNumber.slice(0, 3)})${phoneNumber.slice(
+        phoneNumber = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
           3,
           6
         )}-${phoneNumber.slice(6, 10)}`;
