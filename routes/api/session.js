@@ -17,7 +17,7 @@ router.post("/", async function (req, res, next) {
     contacts.last_name,
     employees.passhash,
     employees.id as employee_id,
-    employee_access_levels.employee_access_level,
+    employees.employee_access_level_id,
     employee_types.employee_type,
     email_addresses.email_address,
     phone_numbers.phone_number,
@@ -31,7 +31,6 @@ router.post("/", async function (req, res, next) {
     LEFT JOIN phone_numbers ON phone_number_entity_rel.phone_number_id = phone_numbers.id
     LEFT JOIN email_addresses ON email_addr_entity_rel.email_address_id = email_addresses.id
     LEFT JOIN employee_types ON employee_types.id = employees.employee_type_id
-    LEFT JOIN employee_access_levels ON employee_access_levels.id = employees.employee_access_level_id
     WHERE employees.username = ?
     AND employees.termination_date IS NULL
   `;
@@ -45,6 +44,7 @@ router.post("/", async function (req, res, next) {
       passhash = results[0]["passhash"];
       employeeId = results[0]["employee_id"];
       extension = results[0]["extension"];
+      accessLevelId = results[0]["employee_access_level_id"];
     }
   } catch (err) {
     return destroyConnSendErr(conn, res, 500, "server error", "Ood8lN");
