@@ -37,14 +37,28 @@ router.post("/", async function (req, res, next) {
   var passhash = "";
   var employeeId = "";
   var accessLevelId = 0;
+  var firstName = "";
+  var lastName = "";
+  var emailAddress = "";
+  var phoneNumber = "";
   var extension = "";
   try {
     var [results] = await conn.query(query, [username]);
     if (results.length > 0) {
       passhash = results[0]["passhash"];
       employeeId = results[0]["employee_id"];
-      extension = results[0]["extension"];
       accessLevelId = results[0]["employee_access_level_id"];
+      firstName = results[0]["first_name"];
+      lastName = results[0]["last_name"];
+      emailAddress = results[0]["email_address"];
+      phoneNumber = results[0]["phone_number"];
+      if (phoneNumber) {
+        phoneNumber = `(${phoneNumber.slice(0, 3)})${phoneNumber.slice(
+          3,
+          6
+        )}-${phoneNumber.slice(6, 10)}`;
+      }
+      extension = results[0]["extension"];
     }
   } catch (err) {
     return destroyConnSendErr(conn, res, 500, "server error", "Ood8lN");
@@ -80,6 +94,11 @@ router.post("/", async function (req, res, next) {
         AwsSecretAccessKey: config.AWS_SECRET_ACCESS_KEY,
         AwsS3Bucket: config.AWS_S3_BUCKET,
         AccessLevelId: accessLevelId,
+        FirstName: firstName,
+        LastName: lastName,
+        PhoneNumber: phoneNumber,
+        Extension: extension,
+        EmailAddress: emailAddress,
       });
     } catch (err) {
       return destroyConnSendErr(conn, res, 500, "server error", "Uk00W3");
