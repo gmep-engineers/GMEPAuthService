@@ -61,6 +61,7 @@ router.post("/", async function (req, res, next) {
       extension = results[0]["extension"];
     }
   } catch (err) {
+    console.log(err);
     return destroyConnSendErr(conn, res, 500, "server error", "Ood8lN");
   }
   var compareResult = await bcrypt.compare(password, passhash);
@@ -101,6 +102,7 @@ router.post("/", async function (req, res, next) {
         EmailAddress: emailAddress,
       });
     } catch (err) {
+      console.log(err);
       return destroyConnSendErr(conn, res, 500, "server error", "Uk00W3");
     }
   } else {
@@ -122,6 +124,7 @@ router.delete("/:SessionId", async function (req, res, next) {
     await conn.query(query, [sid]);
     return destroyConnSendOk(conn, res, 201, { EmployeeId: employeeId });
   } catch (err) {
+    console.log(err);
     return destroyConnSendErr(conn, res, 500, "server error", "PGV6dU");
   }
 });
@@ -140,6 +143,7 @@ router.delete("/all/:SessionId", async function (req, res, next) {
     await conn.query(query, [employeeId]);
     return destroyConnSendOk(conn, res, 201, { EmployeeId: employeeId });
   } catch (err) {
+    console.log(err);
     return destroyConnSendErr(conn, res, 500, "server error", "ISlKf9");
   }
 });
