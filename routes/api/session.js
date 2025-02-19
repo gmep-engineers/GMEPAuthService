@@ -77,7 +77,7 @@ router.post("/", async function (req, res, next) {
       var sqlDatabase = config.SQL_DB;
       var sqlUser = config.SQL_USER;
       var sqlPassword = config.SQL_PASSW_DEV;
-      if (config.ENV !== "PRODUCTION") {
+      if (config.ENV === "PRODUCTION") {
         sqlHost = config.SQL_HOST_PROD;
         sqlPassword = config.SQL_PASSW_PROD;
       }
