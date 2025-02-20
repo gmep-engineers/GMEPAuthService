@@ -40,8 +40,8 @@ router.post("/", async function (req, res, next) {
   var firstName = "";
   var lastName = "";
   var emailAddress = "";
-  var phoneNumber = "";
-  var extension = "";
+  var phoneNumber = 0;
+  var extension = 0;
   try {
     var [results] = await conn.query(query, [username]);
     if (results.length > 0) {
@@ -52,12 +52,6 @@ router.post("/", async function (req, res, next) {
       lastName = results[0]["last_name"];
       emailAddress = results[0]["email_address"];
       phoneNumber = results[0]["phone_number"];
-      if (phoneNumber) {
-        phoneNumber = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
-          3,
-          6
-        )}-${phoneNumber.slice(6, 10)}`;
-      }
       extension = results[0]["extension"];
     }
   } catch (err) {
