@@ -60,7 +60,9 @@ router.post("/", async function (req, res, next) {
   query = `
     INSERT INTO phone_numbers (id, phone_number, calling_code, extension) VALUES (?, ?, ?, ?)
   `;
-  await conn.query(query, [phoneNumberId, phoneNumber, "1", extension]);
+  if (phoneNumber !== 0) {
+    await conn.query(query, [phoneNumberId, phoneNumber, "1", extension]);
+  }
   query = `
     INSERT INTO email_addr_entity_rel (id, email_address_id, entity_id, is_primary) VALUES (?, ?, ?, ?)
   `;
@@ -68,8 +70,14 @@ router.post("/", async function (req, res, next) {
   query = `
     INSERT INTO phone_number_entity_rel (id, phone_number_id, entity_id, is_primary) VALUES (?, ?, ?, ?)
   `;
-  await conn.query(query, [phoneNumberEntityRelId, phoneNumberId, entityId, 1]);
-
+  if (phoneNumber !== 0) {
+    await conn.query(query, [
+      phoneNumberEntityRelId,
+      phoneNumberId,
+      entityId,
+      1,
+    ]);
+  }
   query = `
     INSERT INTO employees (id, contact_id, employee_type_id, employee_access_level_id, hire_date, username, passhash) VALUES 
     (?, ?, ?, ?, ?, ?, ?)
