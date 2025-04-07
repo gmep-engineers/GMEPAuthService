@@ -16,7 +16,7 @@ router.post("/", async function (req, res, next) {
   var lastName = req.body["last_name"];
   var phoneNumber = req.body["phone_number"];
   var extension = req.body["extension"];
-  var employeeTypeId = req.body["employee_type_id"];
+  var employeeTitleId = req.body["employee_title_id"];
   var employeeAccessLevelId = req.body["employee_access_level_id"];
   var hireDate = req.body["hire_date"];
   const conn = await getSqlConnection();
@@ -79,14 +79,14 @@ router.post("/", async function (req, res, next) {
     ]);
   }
   query = `
-    INSERT INTO employees (id, contact_id, employee_type_id, employee_access_level_id, hire_date, username, passhash) VALUES 
+    INSERT INTO employees (id, contact_id, employee_title_id, employee_access_level_id, hire_date, username, passhash) VALUES 
     (?, ?, ?, ?, ?, ?, ?)
   `;
 
   await conn.query(query, [
     employeeId,
     contactId,
-    employeeTypeId,
+    employeeTitleId,
     employeeAccessLevelId,
     hireDate,
     username,
