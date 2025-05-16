@@ -61,12 +61,12 @@ router.post("/", async function (req, res, next) {
   var compareResult = await bcrypt.compare(password, passhash);
   if (compareResult) {
     query = `
-      INSERT INTO sessions (id, employee_id, ip, device_name) VALUES
-      (?, ?, ?, ?)
+      INSERT INTO sessions (id, employee_id) VALUES
+      (?, ?)
     `;
     const id = uuidv4();
     try {
-      await conn.query(query, [id, employeeId, "_", "computer"]);
+      await conn.query(query, [id, employeeId]);
       var sqlHost = config.SQL_HOST_DEV;
       var sqlDatabase = config.SQL_DB;
       var sqlUser = config.SQL_USER;
