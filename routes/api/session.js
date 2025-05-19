@@ -94,6 +94,7 @@ router.post("/", async function (req, res, next) {
         PhoneNumber: phoneNumber,
         Extension: extension,
         EmailAddress: emailAddress,
+        EmployeeId: employeeId,
       });
     } catch (err) {
       console.log(err);
