@@ -10,11 +10,11 @@ router.post("/", async function (req, res, next) {
   var filename = uuidv4() + ".html";
   fs.writeFileSync(path.join(__dirname, "input", filename), html);
   exec(
-    `wkhtmltopdf --enable-local-file-access --header-html "file://${path.join(
+    `wkhtmltopdf --enable-local-file-access --header-html "${path.join(
       __dirname,
       "pdf_templates",
       "header.html"
-    )}" --footer-html "file://${path.join(
+    )}" --footer-html "${path.join(
       __dirname,
       "pdf_templates",
       "footer.html"
