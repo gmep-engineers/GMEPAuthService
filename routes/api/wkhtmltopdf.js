@@ -18,7 +18,7 @@ router.post("/", async function (req, res, next) {
       __dirname,
       "pdf_templates",
       "footer.html"
-    )}" --load-error-handling ignore --page-size Letter "${path.join(
+    )}" --page-size Letter "${path.join(
       __dirname,
       "input",
       filename
