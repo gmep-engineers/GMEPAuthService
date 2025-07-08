@@ -10,7 +10,15 @@ router.post("/", async function (req, res, next) {
   var filename = uuidv4() + ".html";
   fs.writeFileSync(path.join(__dirname, "input", filename), html);
   exec(
-    `"c:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf" --load-error-handling ignore "${path.join(
+    `wkhtmltopdf --enable-local-file-access --header-html "file:///${path.join(
+      __dirname,
+      "pdf_templates",
+      "header.html"
+    )}" --footer-html "file:///${path.join(
+      __dirname,
+      "pdf_templates",
+      "footer.html"
+    )}" --load-error-handling ignore --page-size Letter "${path.join(
       __dirname,
       "input",
       filename
