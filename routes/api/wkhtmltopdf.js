@@ -9,16 +9,25 @@ router.post("/", async function (req, res, next) {
   var html = req.body.html;
   var filename = uuidv4() + ".html";
   fs.writeFileSync(path.join(__dirname, "input", filename), html);
+  var footerTemplate = fs.readFileSync(
+    path.join(__dirname, "pdf_templates", "footer.html"),
+    "utf8"
+  );
+  footerTemplate = footerTemplate.replace("$ProjectName", req.body.ProjectName);
+  fs.writeFileSync(
+    path.join(__dirname, "input", "formatted-footer.html"),
+    footerTemplate
+  );
   exec(
-    `wkhtmltopdf --enable-local-file-access --header-html "${path.join(
+    `wkhtmltopdf --enable-local-file-access --header-html "file://${path.join(
       __dirname,
       "pdf_templates",
       "header.html"
-    )}" --footer-html "${path.join(
+    )}" --footer-html "file://${path.join(
       __dirname,
-      "pdf_templates",
-      "footer.html"
-    )}" --page-size Letter "${path.join(
+      "input",
+      "formatted-footer.html"
+    )}" --page-size Letter -B 12mm "${path.join(
       __dirname,
       "input",
       filename
