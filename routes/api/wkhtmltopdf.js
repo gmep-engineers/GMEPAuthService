@@ -4,18 +4,24 @@ var router = express.Router();
 var fs = require("fs");
 var path = require("path");
 const { v4: uuidv4 } = require("uuid");
+const multer = require("multer");
+const upload = multer({ dest: "routes/api/input" });
 
-router.post("/", async function (req, res, next) {
-  var html = req.body.html;
-  var filename = uuidv4() + ".html";
-  fs.writeFileSync(path.join(__dirname, "input", filename), html);
+router.post("/", upload.single("file"), async function (req, res, next) {
+  var filename = req.file.filename + ".html";
+  fs.renameSync(
+    path.join(__dirname, "input", req.file.filename),
+    path.join(__dirname, "input", filename)
+  );
+
   var footerTemplate = fs.readFileSync(
     path.join(__dirname, "pdf_templates", "footer.html"),
     "utf8"
   );
   footerTemplate = footerTemplate.replace("$ProjectName", req.body.ProjectName);
+  const footerTemplateId = uuidv4();
   fs.writeFileSync(
-    path.join(__dirname, "input", "formatted-footer.html"),
+    path.join(__dirname, "input", `formatted-footer-${footerTemplateId}.html`),
     footerTemplate
   );
   exec(
@@ -33,6 +39,14 @@ router.post("/", async function (req, res, next) {
       filename
     )}" routes/api/output/${filename}.pdf`,
     (err, stdout, stderr) => {
+      fs.unlinkSync(
+        path.join(
+          __dirname,
+          "input",
+          `formatted-footer-${footerTemplateId}.html`
+        )
+      );
+      fs.unlinkSync(path.join(__dirname, "input", filename));
       if (err) {
         console.log("wkhtmltopdf err");
         console.error(err);
@@ -49,6 +63,7 @@ router.post("/", async function (req, res, next) {
           console.error(err);
           return res.status(500).send(err);
         }
+        fs.unlinkSync(`routes/api/output/${filename}.pdf`);
       });
     }
   );
