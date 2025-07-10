@@ -16,6 +16,8 @@ router.post(
 
     var params = {};
 
+    params.NewConstruction = req.body.NewConstruction;
+
     params.ProjectName = req.body.ProjectName;
     params.ProjectAddress = req.body.ProjectAddress;
     params.Client = req.body.Client;
@@ -29,6 +31,38 @@ router.post(
     params.ElectricalDescriptions = req.body.ElectricalDescriptions;
     params.StructuralDescriptions = req.body.StructuralDescriptions;
 
+    var ScopeDepartmentList = [];
+
+    if (params.StructuralDescriptions) {
+      ScopeDepartmentList.push("structural");
+    }
+    if (params.MechanicalDescriptions) {
+      ScopeDepartmentList.push("mechanical");
+    }
+    if (params.ElectricalDescriptions) {
+      ScopeDepartmentList.push("electrical");
+    }
+    if (params.PlumbingDescriptions) {
+      ScopeDepartmentList.push("plumbing");
+    }
+
+    if (ScopeDepartmentList.length === 1) {
+      params.ScopeDepartmentList = ScopeDepartmentList[0];
+    }
+    if (ScopeDepartmentList.length === 2) {
+      params.ScopeDepartmentList = `${ScopeDepartmentList[0]} and ${ScopeDepartmentList[1]}`;
+    }
+    if (ScopeDepartmentList.length === 3) {
+      params.ScopeDepartmentList = `${ScopeDepartmentList[0]}, ${ScopeDepartmentList[1]}, and ${ScopeDepartmentList[2]}`;
+    }
+    if (ScopeDepartmentList.length === 4) {
+      params.ScopeDepartmentList = `${ScopeDepartmentList[0]}, ${ScopeDepartmentList[1]}, ${ScopeDepartmentList[2]}, and ${ScopeDepartmentList[3]}`;
+    }
+
+    params.NumMeetings = parseInt(req.body.NumMeetings);
+    params.HasInitialRecommendationsMeeting =
+      req.body.HasInitialRecommendationsMeeting;
+
     params.getNextLetter = function (letter) {
       var letters = "ABCDEFGabcdefg";
       var index = letters.indexOf(letter);
@@ -37,6 +71,7 @@ router.post(
 
     params.letter = "";
     params.romanNumeral = "";
+    params.number = 1;
 
     params.getNextRomanNumeral = function (romanNumeral) {
       var romanNumerals = ["i", "ii", "iii", "iv", "v", "vi", "vii"];
@@ -94,8 +129,8 @@ router.post(
       )}" --footer-html "file://${path.join(
         __dirname,
         "input",
-        "formatted-footer.html"
-      )}" --page-size Letter -B 12mm "${path.join(
+        `formatted-footer-${footerTemplateId}.html`
+      )}" --footer-left [page]/[topage] --page-size Letter -B 12mm "${path.join(
         __dirname,
         "input",
         filename
