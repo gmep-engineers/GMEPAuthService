@@ -2,13 +2,36 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script>
+        function substitutePdfVariables() {
+
+            function getParameterByName(name) {
+                var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+                return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+            }
+
+            function substitute(name) {
+                var value = getParameterByName(name);
+                var elements = document.getElementsByClassName(name);
+
+                for (var i = 0; elements && i < elements.length; i++) {
+                    elements[i].textContent = value;
+                }
+            }
+
+            ['frompage', 'topage', 'page', 'webpage', 'section', 'subsection', 'subsubsection']
+                .forEach(function(param) {
+                    substitute(param);
+                });
+        }
+    </script>
 </head>
-<body>
+<body onload="substitutePdfVariables()">    
     <div style="font-family:Arial, Helvetica, sans-serif;">  
         <hr/>
         <table >
             <tr>
-                <td style="width: 5.5in">$ProjectName</td>
+                <td style="width: 5.5in"><span class="page"></span> | $ProjectName</td>
                 <td>GMEP Initials:_______ &nbsp; Client Initials:_______</td>
             </tr>
         </table>
