@@ -33,6 +33,10 @@ router.post(
 
     params.TotalPrice = parseInt(req.body.TotalPrice);
 
+    params.ClientType = req.body.ClientType;
+
+    params.HasSiteVisit = req.body.HasSiteVisit;
+
     var ScopeDepartmentList = [];
 
     if (params.StructuralDescriptions) {
