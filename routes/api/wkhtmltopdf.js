@@ -31,6 +31,8 @@ router.post(
     params.ElectricalDescriptions = req.body.ElectricalDescriptions;
     params.StructuralDescriptions = req.body.StructuralDescriptions;
 
+    params.TotalPrice = parseInt(req.body.TotalPrice);
+
     var ScopeDepartmentList = [];
 
     if (params.StructuralDescriptions) {
