@@ -62,6 +62,10 @@
         .new-page {
             page-break-before: always;
         }
+
+        .avoid-page-break {
+            page-break-inside: avoid;
+        }
         
     </style>
 </head>
@@ -728,170 +732,173 @@
                 </tr>
             </table>
         </div>
-        <div class="h">
+        <div class="avoid-page-break">
+            <div class="h">
             V. Payment Schedule:            
-        </div>
-        <div class="t1">
-            <table>
-                <tr>
-                    <td>A.</td>
-                    <td class="t1-title-text-td">Client agrees to pay GMEP for its Services (Basic Services and any additional services) as follows:</td>
-                </tr>
-            </table>
-        </div>
-        <div class="t2">
-            <table>
-                <% if (ClientType === "loyal") { %>
-                    <% if (TotalPrice < 3000) { %>
-                        <tr>
-                            <td>1.</td>
-                            <td>Completion of 1st submittal to the client: 100% of fee: $<%= TotalPrice %></td>
-                        </tr>
+            </div>
+            <div class="t1">
+                <table>
+                    <tr>
+                        <td>A.</td>
+                        <td class="t1-title-text-td">Client agrees to pay GMEP for its Services (Basic Services and any additional services) as follows:</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="t2">
+                <table>
+                    <% if (ClientType === "loyal") { %>
+                        <% if (TotalPrice < 3000) { %>
+                            <tr>
+                                <td>1.</td>
+                                <td>Completion of 1st submittal to the client: 100% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                        <% } %>
+                        <% if (TotalPrice >= 3000 && TotalPrice < 15000) { %>  
+                            <tr>
+                                <td>1.</td>
+                                <td>Completion of 1st submittal to the client: 75% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                        <% } %>                    
+                        <% if (TotalPrice >= 15000 && TotalPrice < 25000) { %>
+                            <tr>
+                                <td>1.</td>
+                                <td>Completion of 50% CD's to the client: 25% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                        <% } %>                    
+                        <% if (TotalPrice >= 25000) { %>
+                            <tr>
+                                <td>1.</td>
+                                <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
+                            </tr>
+                        <% } %>
                     <% } %>
-                    <% if (TotalPrice >= 3000 && TotalPrice < 15000) { %>  
-                        <tr>
-                            <td>1.</td>
-                            <td>Completion of 1st submittal to the client: 75% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                    <% } %>                    
-                    <% if (TotalPrice >= 15000 && TotalPrice < 25000) { %>
-                        <tr>
-                            <td>1.</td>
-                            <td>Completion of 50% CD's to the client: 25% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                        <tr>
-                            <td>3.</td>
-                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                    <% } %>                    
-                    <% if (TotalPrice >= 25000) { %>
-                        <tr>
-                            <td>1.</td>
-                            <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
-                        </tr>
+                    <% if (ClientType === "returning") { %>
+                        <% if (TotalPrice < 1000) { %>
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 100% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                        <% } %>
+                        <% if (TotalPrice >= 1000 && TotalPrice < 3000) { %>
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>2.</td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                        <% } %>
+                        <% if (TotalPrice >= 3000 && TotalPrice < 10000) { %>
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>2.</td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>3.</td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                        <% } %>                    
+                        <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %>
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>2.</td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>3.</td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice %></td>
+                            </tr>                      
+                            <tr>
+                                <td>4.</td>
+                                <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                        <% } %>                    
+                        <% if (TotalPrice >= 25000) { %> 
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
+                            </tr>
+                        <% } %>
                     <% } %>
-                <% } %>
-                <% if (ClientType === "returning") { %>
-                    <% if (TotalPrice < 1000) { %>
-                        <tr>
-                            <td>1.</td>
-                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 100% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                    <% } %>
-                    <% if (TotalPrice >= 1000 && TotalPrice < 3000) { %>
-                        <tr>
-                            <td>1.</td>
-                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice %></td>
-                        </tr>                        
-                        <tr>
-                            <td>2.</td>
-                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                    <% } %>
-                    <% if (TotalPrice >= 3000 && TotalPrice < 10000) { %>
-                        <tr>
-                            <td>1.</td>
-                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
-                        </tr>                        
-                        <tr>
-                            <td>2.</td>
-                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
-                        </tr>                        
-                        <tr>
-                            <td>3.</td>
-                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                    <% } %>                    
-                    <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %>
-                        <tr>
-                            <td>1.</td>
-                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
-                        </tr>                        
-                        <tr>
-                            <td>2.</td>
-                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
-                        </tr>                        
-                        <tr>
-                            <td>3.</td>
-                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice %></td>
-                        </tr>                      
-                        <tr>
-                            <td>4.</td>
-                            <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                    <% } %>                    
-                    <% if (TotalPrice >= 25000) { %> 
-                        <tr>
-                            <td>1.</td>
-                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice %></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
-                        </tr>
-                    <% } %>
-                <% } %>
-                <% if (ClientType === "new") { %>
-                    <% if (TotalPrice < 2000) { %> 
-                        <tr>
-                            <td>1.</td>
-                            <td>.</td>
-                        </tr>
-                    <% } %>
-                    <% if (TotalPrice >= 2000 && TotalPrice < 10000) { %> 
+                    <% if (ClientType === "new") { %>
+                        <% if (TotalPrice < 2000) { %> 
+                            <tr>
+                                <td>1.</td>
+                                <td>.</td>
+                            </tr>
+                        <% } %>
+                        <% if (TotalPrice >= 2000 && TotalPrice < 10000) { %> 
 
-                    <% } %>
-                    <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %> 
-                                          
-                    <% } %>                   
-                    <% if (TotalPrice >= 25000) { %>  
+                        <% } %>
+                        <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %> 
+                                            
+                        <% } %>                   
+                        <% if (TotalPrice >= 25000) { %>  
 
+                        <% } %>
                     <% } %>
-                <% } %>
-                <!--
-                <tr>
-                    <td>1.</td>
-                    <td>Client agrees to pay 70% at the time of submittal of plans to the client and the rest 30% at the time the drawings are approved or 60 days after the first submittal, whichever comes first.</td>
-                </tr>
-                <tr>
-                    <td>2.</td>
-                    <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $</td>
-                </tr>
-                <tr>
-                    <td>3.</td>
-                    <td>Completion of 1st submittal to the client: 50% of fee: $</td>
-                </tr>
-                <tr>
-                    <td>4.</td>
-                    <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $</td>
-                </tr>
-                <tr>
-                    <td>5.</td>
-                    <td>Full contract amount is required for 1st submittal.</td>
-                </tr>
-                <tr>
-                    <td>6.</td>
-                    <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
-                </tr>
-            -->
-            </table>
+                    <!--
+                    <tr>
+                        <td>1.</td>
+                        <td>Client agrees to pay 70% at the time of submittal of plans to the client and the rest 30% at the time the drawings are approved or 60 days after the first submittal, whichever comes first.</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Completion of 1st submittal to the client: 50% of fee: $</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Full contract amount is required for 1st submittal.</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
+                    </tr>
+                -->
+                </table>
+            </div>
+            <div class="t1">
+                <table>
+                    <tr>
+                        <td>B.</td>
+                        <td>Additional meetings/ additional services outside of Basic Service will be billed upon completion and due upon receipt unless otherwise stated on the service amendment.</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="t1">
-            <table>
-                <tr>
-                    <td>B.</td>
-                    <td>Additional meetings/ additional services outside of Basic Service will be billed upon completion and due upon receipt unless otherwise stated on the service amendment.</td>
-                </tr>
-            </table>
-        </div>
+        
         <div class="h">
             VI. Reimbursement Expenses
         </div>

@@ -26,7 +26,7 @@ router.post("/commercial", async function (req, res, next) {
   params.ElectricalDescriptions = req.body.ElectricalDescriptions;
   params.StructuralDescriptions = req.body.StructuralDescriptions;
 
-  params.TotalPrice = parseInt(req.body.TotalPrice);
+  params.TotalPrice = req.body.TotalPrice;
 
   params.ClientType = req.body.ClientType;
 
@@ -62,7 +62,7 @@ router.post("/commercial", async function (req, res, next) {
     params.ScopeDepartmentList = `${ScopeDepartmentList[0]}, ${ScopeDepartmentList[1]}, ${ScopeDepartmentList[2]}, and ${ScopeDepartmentList[3]}`;
   }
 
-  params.NumMeetings = parseInt(req.body.NumMeetings);
+  params.NumMeetings = req.body.NumMeetings;
   params.HasInitialRecommendationsMeeting =
     req.body.HasInitialRecommendationsMeeting;
 
