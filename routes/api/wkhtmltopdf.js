@@ -30,7 +30,7 @@ router.post(
     params.StructuralDescriptions = req.body.StructuralDescriptions;
 
     params.getNextLetter = function (letter) {
-      var letters = ["ABCDEFGabcdefg"];
+      var letters = "ABCDEFGabcdefg";
       var index = letters.indexOf(letter);
       return letters[index + 1];
     };
@@ -50,18 +50,23 @@ router.post(
     );
 
     await new Promise((resolve, reject) => {
-      ejs.renderFile(filename, params, (err, str) => {
-        if (!err) {
-          fs.writeFileSync(
-            path.join(__dirname, "input", req.file.filename + ".html"),
-            str
-          );
-          filename = req.file.filename + ".html";
-          resolve();
-        } else {
-          reject();
+      ejs.renderFile(
+        path.join(__dirname, "input", filename),
+        params,
+        (err, str) => {
+          if (!err) {
+            fs.writeFileSync(
+              path.join(__dirname, "input", req.file.filename + ".html"),
+              str
+            );
+            filename = req.file.filename + ".html";
+            resolve();
+          } else {
+            console.log(err);
+            reject();
+          }
         }
-      });
+      );
     });
 
     var footerTemplate = fs.readFileSync(
