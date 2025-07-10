@@ -130,7 +130,7 @@ router.post(
         __dirname,
         "input",
         `formatted-footer-${footerTemplateId}.html`
-      )}" --footer-left [page] --page-size Letter -B 12mm "${path.join(
+      )}" --page-size Letter -B 25.4mm "${path.join(
         __dirname,
         "input",
         filename
