@@ -209,6 +209,8 @@ router.post("/t24", async (req, res) => {
 router.post("/residential", async (req, res) => {
   var filename = "residential-proposal-template.ejs";
 
+  var params = {};
+
   params.NewConstruction = req.body.NewConstruction;
 
   params.ProjectName = req.body.ProjectName;
