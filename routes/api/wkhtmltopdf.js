@@ -171,6 +171,7 @@ router.post("/site-lighting-tarrar", async (req, res) => {
   params.TarrarNo = req.body.TarrarNo;
   params.DateSent = req.body.DateSent;
 
+  const templateId = uuidv4();
   await new Promise((resolve, reject) => {
     ejs.renderFile(
       path.join(__dirname, "pdf_templates", filename),
