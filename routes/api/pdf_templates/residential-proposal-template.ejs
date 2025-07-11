@@ -146,7 +146,7 @@
                     <td>8.</td>
                     <td>Provide air distribution design per the architectural background</td>
                 </tr>
-                <%= if (HasGarageExhaust) { %>     
+                <% if (HasGarageExhaust) { %>     
                  <tr>
                     <td>9.</td>
                     <td>Provide garage exhaust design if any</td>
@@ -155,7 +155,7 @@
             </table>
         </div>
         
-        <%= if (HasGarageExhaust) { %>  
+        <% if (HasGarageExhaust) { %>  
         <div class="t2">
             <table>
                 <tr>
@@ -183,7 +183,7 @@
         </div>
         <% } %>
         
-        <%= if (HasCommercialShellConnection) { %>
+        <% if (HasCommercialShellConnection) { %>
         <div class="t2">
             <table>
                 <tr>
@@ -253,7 +253,7 @@
                 </tr>
                 <% number++; } %>
                 
-                <%= if (HasCommercialShellConnection) { %>
+                <% if (HasCommercialShellConnection) { %>
                 <tr>
                     <td><%= number %>.</td>
                     <td>Provide electrical conduit stub out to commercial spaces</td>
@@ -264,7 +264,7 @@
                     <td>Load estimation for each commercial space</td>
                 </tr>
                 <% number++; } %>                
-                <%= if (HasSiteLighting) { %>
+                <% if (HasSiteLighting) { %>
                 <tr>
                     <td><%= number %>.</td>
                     <td>Site lighting and photometric</td>
@@ -334,7 +334,7 @@
                     <td>General specification for plumbing materials, plumbing fixtures in public area (plumbing fixtures in dwelling area will be specified by the client)</td>
                 </tr>
                 <% number++; } %>                
-                <%= if (HasCommercialShellConnection) { %>
+                <% if (HasCommercialShellConnection) { %>
                 <tr>
                     <td><%= number %>.</td>
                     <td>Water, gas, sewer, grease stub out for future commercial spaces</td>
