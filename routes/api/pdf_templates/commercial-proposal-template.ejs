@@ -73,11 +73,28 @@
     <div style="font-family: sans-serif">
         <div class="main-title">Service Agreement between GMEP Engineers and Client</div>
         <div class="address-container">
-            <div><span class="label">Project Name:&nbsp;</span><span><%= ProjectName %></span></div>
-            <div><span class="label">Project Address:&nbsp;</span><span><%= ProjectAddress %></span></div>
-            <div><span class="label">Client:&nbsp;</span><span><%= Client %></span></div>
-            <div><span class="label">Architect:&nbsp;</span><span><%= Architect %></span></div>
-            <div><span class="label">Date Sent:&nbsp;</span><span><%= DateSent %></span></div>
+            <table>
+                <tr>
+                    <td>Project Name:</td>
+                    <td><%= ProjectName %></td>
+                </tr>
+                <tr>
+                    <td>Project Address:</td>
+                    <td><%= ProjectName %></td>
+                </tr>
+                <tr>
+                    <td>Client:</td>
+                    <td><%= Client %></td>
+                </tr>
+                <tr>
+                    <td>Architect:</td>
+                    <td><%= Architect %></td>
+                </tr>
+                <tr>
+                    <td>Date Sent:</td>
+                    <td><%= DateSent %></td>
+                </tr>
+            </table>
         </div>
         <div class="h">
             I. Project Descriptions:
@@ -826,45 +843,48 @@
                         <% if (TotalPrice < 2000) { %> 
                             <tr>
                                 <td>1.</td>
-                                <td>.</td>
+                                <td>Completion of 1st submittal to the client: 100% of fee: $<%= TotalPrice %></td>
                             </tr>
                         <% } %>
                         <% if (TotalPrice >= 2000 && TotalPrice < 10000) { %> 
-
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>2.</td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>  
                         <% } %>
                         <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %> 
-                                            
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>2.</td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                            </tr>                        
+                            <tr>
+                                <td>3.</td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice %></td>
+                            </tr>                      
+                            <tr>
+                                <td>4.</td>
+                                <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice %></td>
+                            </tr>                
                         <% } %>                   
                         <% if (TotalPrice >= 25000) { %>  
-
+                            <tr>
+                                <td>1.</td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice %></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
+                            </tr>
                         <% } %>
-                    <% } %>
-                    <!--
-                    <tr>
-                        <td>1.</td>
-                        <td>Client agrees to pay 70% at the time of submittal of plans to the client and the rest 30% at the time the drawings are approved or 60 days after the first submittal, whichever comes first.</td>
-                    </tr>
-                    <tr>
-                        <td>2.</td>
-                        <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $</td>
-                    </tr>
-                    <tr>
-                        <td>3.</td>
-                        <td>Completion of 1st submittal to the client: 50% of fee: $</td>
-                    </tr>
-                    <tr>
-                        <td>4.</td>
-                        <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $</td>
-                    </tr>
-                    <tr>
-                        <td>5.</td>
-                        <td>Full contract amount is required for 1st submittal.</td>
-                    </tr>
-                    <tr>
-                        <td>6.</td>
-                        <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
-                    </tr>
-                -->
+                    <% } %>                    
                 </table>
             </div>
             <div class="t1">
