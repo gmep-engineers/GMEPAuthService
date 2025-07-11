@@ -286,6 +286,7 @@ router.post("/residential", async (req, res) => {
   params.HasEmergencyPower = req.body.HasEmergencyPower;
   params.HasStructural = req.body.StructuralDescriptions;
   params.HasGarageExhaust = req.body.HasGarageExhaust;
+  params.HasSiteLighting = req.body.HasSiteLighting;
 
   await finalize(req, res, filename, params);
 });
