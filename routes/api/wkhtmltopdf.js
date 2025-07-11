@@ -34,6 +34,11 @@ router.post("/commercial", async function (req, res, next) {
 
   params.RetainerPercent = req.body.RetainerPercent;
 
+  params.ClientContactName = req.body.ClientContactName;
+  params.ClientBusinessName = req.body.ClientBusinessName;
+  params.ClientStreetAddress = req.body.ClientStreetAddress;
+  params.ClientCityStateZip = req.body.ClientCityStateZip;
+
   var ScopeDepartmentList = [];
 
   if (params.StructuralDescriptions) {
