@@ -160,7 +160,7 @@ router.post("/commercial", async function (req, res, next) {
 });
 
 router.post("/site-lighting-tarrar", async (req, res) => {
-  var filename = "sit-lighting-tarrar-template.ejs";
+  var filename = "site-lighting-tarrar-template.ejs";
 
   var params = {};
 
