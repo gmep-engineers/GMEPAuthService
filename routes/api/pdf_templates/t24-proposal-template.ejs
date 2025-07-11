@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .margin-auto {
+            margin: auto;
+        }
+        .main-title {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 16pt;
+            text-align: center;
+        }
+        .address-container {
+            margin-left: 0;
+            .label {
+                font-weight: bold;
+            }
+        }
+        .h {
+            font-weight: bold;
+            margin-left: 0;
+            font-size: 12pt;
+            margin-top: 12pt;
+            margin-bottom: 12pt;
+        }
+        .p {
+            margin-left: 20pt;
+            font-size: 12pt;
+            font-weight: 400;
+        }
+        .t1 {
+            margin-left: 20pt;
+        }
+        .t2 {
+            margin-left: 40pt;
+        }    
+        .t3 {
+            margin-left: 60pt;
+        }
+        tr {
+            page-break-inside: avoid
+        }
+        td {
+            vertical-align: top;
+            text-align: justify;        
+        }
+        .t1-title-text-td {
+            text-align: left;
+            width: 7in;
+        }
+        .t3-label {
+            text-align: right;
+        }
+        hr {
+            border: none;
+            background-color: black;
+            height: 1px;
+        }
+        
+        .new-page {
+            page-break-before: always;
+        }
+
+        .avoid-page-break {
+            page-break-inside: avoid;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="flex-column" style="width: 7.5in;">
+        <div class="main-title margin-auto">Service Agreement between GMEP Engineers and Client</div>
+        <div class="address-container">
+            <table>
+                <tr>
+                    <td>Project Name:</td>
+                    <td style="width: 7in"><%= ProjectName %></td>
+                </tr>
+                <tr>
+                    <td>Project Address:&nbsp;</td>
+                    <td><%= ProjectAddress %></td>
+                </tr>
+                <tr>
+                    <td>Client:</td>
+                    <td><%= Client %></td>
+                </tr>
+                <tr>
+                    <td>Architect:</td>
+                    <td><%= Architect %></td>
+                </tr>
+                <tr>
+                    <td>Date Sent:</td>
+                    <td><%= DateSent %></td>
+                </tr>
+            </table>
+        </div>
+        <div class="h">
+            I. Project Description & Scope of Work:
+        </div>
+        <div class="p">Title 24 Calculation</div>
+        <div class="t1">            
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Model the building envelope and building system by latest EnergyPro.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Provide client two or three options for equipment efficiencies and building envelope insulations to achieve the client required energy performance.</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Generate the report in PDF format.</td>
+                </tr>
+            </table>
+        </div>        
+        <div class="h">
+            II. Items Furnished by the Client:
+        </div>
+         <div class="t1">            
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Architectural drawings in PDF format.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>HVAC & water heater specifications.</td>
+                </tr>
+            </table>
+        </div>    
+        <div class="h">
+            III. Compensation and Fee Schedule:
+        </div>
+        <div class="t1">            
+            <table>
+                <tr>
+                    <td>•</td>
+                    <td><b>Basic Service</b> indicated in Scope of Service…………………………….…………<b>$ 850.00</b></td>
+                </tr>
+                <tr>
+                    <td>•</td>
+                    <td><b>Additional Service:</b><br/>Additional services provided beyond the Basic Services and agreed upon by Client and GMEP will be performed on an hourly basis in accordance with the then current Fee Schedule.  The current fee schedule is shown below:</td>
+                </tr>
+            </table>
+        </div> 
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Principal Engineer </td>
+                    <td>=</td>
+                    <td>$<u>370/hour</u></td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Project Manager</td>
+                    <td>=</td>
+                    <td>$<u>275/hour</u></td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Engineer</td>
+                    <td>=</td>
+                    <td>$<u>185/hour</u></td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Drafter</td>
+                    <td>=</td>
+                    <td>$<u>130/hour</u></td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Administrative</td>
+                    <td>=</td>
+                    <td>$<u>110/hour</u></td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>Site observation</td>
+                    <td>=</td>
+                    <td>$<u>600</u>/engineer/meeting</td>
+                </tr>
+                <tr>
+                    <td>7.</td>
+                    <td>Jobsite meeting	</td>
+                    <td>=</td>
+                    <td>$<u>600</u>/engineer/meeting</td>
+                </tr>
+                <tr>
+                    <td>8.</td>
+                    <td>Structural observation</td>
+                    <td>=</td>
+                    <td>$<u>600</u>/trip</td>
+                </tr>
+            </table>
+        </div>
+        <div class="t1">            
+            <table>
+                <tr>
+                    <td>•</td>
+                    <td><b>Payment Schedule:</b></td>
+                </tr>
+            </table>
+        </div>
+        <div class="t2">            
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Full contract due upon signing contract.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="t2">            
+            <table>
+                <tr>
+                    <td>2.</td>
+                    <td>Additional meetings/additional service outside of Basic Services will be billed upon completion and due upon receipt.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="h">
+            V. Terms, Conditions and Clarifications:
+        </div>
+        <div class="t1">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>GMEP will perform its Services under this Agreement in a timely manner consistent with similar engineers providing similar services for similar projects, in accordance with generally and currently accepted engineering principles and practices, and without any warranties either express or implied.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>This proposal is per the information provided by the client on <%= DateDrawingsReceived %>. Prior to starting the project, the client will provide GMEP with final architectural .DWG drawings (ARCH Drawings).  The difference between the drawings received on <%= DateDrawingsReceived %> and the ARCH Drawings should be less than 10%. If the difference between the drawings is over 10%, GMEP will review the project and re-assess the project fees.</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td><b>Each invoice will be due and payable upon receipt</b>, and delinquent 30 days after its date. In the event of delinquency, interest shall accrue from the invoice date at 1.5% per month, compounded monthly, or at the highest rate permitted by California law, whichever is lower, with payments applied first to accrued interest. No deductions shall be made from GMEP’s compensation on account of problems or losses for which GMEP has not been held legally liable. GMEP’s fee will be equitably adjusted in the event of significant changes to the Project’s program or scheduling.</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>The return of a check (electronic or paper) issued to GMEP will result in a mandatory $25.00 returned check fee.</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Refunds on credit card payments will incur a 5% convenience fee.</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>GMEP may suspend all work on this project if payment of any invoice is not made within 30 days of the invoice date.</td>
+                </tr>
+                <tr>
+                    <td>7.</td>
+                    <td>In the event any portion of an account remains unpaid 30 days after billing, the client shall pay cost of collection, including reasonable attorneys' fee.</td>
+                </tr>
+                <tr>
+                    <td>8.</td>
+                    <td>This proposed fee is only effective for 15 days</td>
+                </tr>
+                <tr>
+                    <td>9.</td>
+                    <td>GMEP and Client shall both have the right to terminate this Agreement at any time by three (3) days’ prior written notice to the other party, which notice shall specify the effective date of termination. Prior to GMEP being obligated to provide any of its instruments of service provided under this Agreement, Client shall pay GMEP for its services rendered by GMEP through date of termination, including any services GMEP rendered in transferring the files to Client.</td>
+                </tr>
+                <tr>
+                    <td>10.</td>
+                    <td>GMEP will participate in any reasonable and appropriate manner in the Client’s coordination of the services of the Project’s various consultants; but Client acknowledges that GMEP lacks the right to control the performance of others and the training and expertise necessary to perform or critique the services of others, and in no event will GMEP have any responsibility for any professional errors or omissions committed by others.</td>
+                </tr>                
+                <tr>
+                    <td>11.</td>
+                    <td>In light of the limited ability of GMEP to affect the risks inherent in the Project, and of the disparity between GMEP’s fees and the  potential liability for problems or alleged problems with the Project, Client shall to the fullest extent allowed by law, and in addition to GMEP’s common law rights, release and indemnify GMEP and GMEP’s subconsultants, if any, and their respective affiliated entities and individuals, concerning any and all claims, liability, expenses and/or losses related to the Project (including attorneys and expert fees incurred and the value of professional time expended to address claims or problems) provided, however, that this indemnification shall not apply to any indemnitee to the extent of that indemnitee’s active negligence or willful misconduct.  Further and in any event, Client agrees to limit the total aggregate liability concerning or related to the Project of GMEP and GMEP’s subconsultants, if any, and their respective affiliated entities and individuals, on any and all legal and equitable theories and concerning all kinds and causes of loss to the fullest extent allowed by law as to Client and all third parties to the lessor of twice the amount of GMEP’s fee received for the Project or fifty thousand dollars. Because the amount of such damages can neither be controlled nor predicted, each party waives any claim that it has or might have to obtain consequential and/or economic damages from the other concerning or related to the Project and/or this Agreement.</td>
+                </tr>
+                <tr>
+                    <td>12.</td>
+                    <td>Any additional terms and conditions which are mutually agreed, if attached to this agreement, shall be part of this agreement.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="avoid-page-break">
+            <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+            GMEP’s proposed fee for its Basic Services is effective for 15 days from the day of this proposal/agreement.  Please sign in space provided below to signify authorization of GMEP to proceed: 
+            </div>
+            <div><hr/></div>            
+            <table style="width: 100%;">
+                <tr>
+                    <td><b>Client:</b></td>
+                    <td style="width: 50%;">Signature</td>
+                </tr>
+                <tr>
+                    <td><%= ClientContactName %></td>
+                    <td></td>
+                </tr>            
+                <tr>
+                    <td><%= ClientBusinessName %></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><%= ClientStreetAddress %></td>
+                    <td>Date</td>
+                </tr>            
+                <tr>
+                    <td><%= ClientCityStateZip %></td>
+                    <td></td>
+                </tr>
+            </table>            
+            <div><hr/></div>            
+            <table style="width: 100%;">
+                <tr>
+                    <td><b>Consultant:</b></td>
+                    <td style="width: 50%;">Signature</td>
+                </tr>
+                <tr>
+                    <td>Gary Zhou, President</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>GMEP Engineers,</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>26439 Rancho Pkwy S., Ste#120</td>
+                    <td>Date</td>
+                </tr>
+                <tr>
+                    <td>Lake Forest, CA 92630</td>
+                    <td></td>
+                </tr>
+            </table>
+            
+            <div><hr/></div>
+
+            <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+                Please provide names, phone numbers, and email addresses of recipients of invoices:  
+            </div>
+            <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+                Name: ___________________________________	email: _____________________________________
+            </div>        
+            <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+                Phone: ___________________________________
+            </div>
+            <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+                Name: ___________________________________	email: _____________________________________
+            </div>                
+            <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+                Phone: ___________________________________
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1321 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .margin-auto {
+            margin: auto;
+        }
+        .main-title {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 16pt;
+            text-align: center;
+        }
+        .address-container {
+            margin-left: 0;
+            .label {
+                font-weight: bold;
+            }
+        }
+        .h {
+            font-weight: bold;
+            margin-left: 0;
+            font-size: 12pt;
+            margin-top: 12pt;
+            margin-bottom: 12pt;
+        }
+        .p {
+            margin-left: 20pt;
+            font-size: 12pt;
+            font-weight: 400;
+        }
+        .t1 {
+            margin-left: 20pt;
+        }
+        .t2 {
+            margin-left: 40pt;
+        }    
+        .t3 {
+            margin-left: 60pt;
+        }
+        tr {
+            page-break-inside: avoid
+        }
+        td {
+            vertical-align: top;
+            text-align: justify;        
+        }
+        .t1-title-text-td {
+            text-align: left;
+            width: 7in;
+        }
+        .t3-label {
+            text-align: right;
+        }
+        hr {
+            border: none;
+            background-color: black;
+            height: 1px;
+        }
+        
+        .new-page {
+            page-break-before: always;
+        }
+
+        .avoid-page-break {
+            page-break-inside: avoid;
+        }
+        
+    </style>
+</head>
+<body>
+    <div style="font-family: sans-serif">
+        <div class="main-title">Service Agreement between GMEP Engineers and Client</div>
+        <div class="address-container">
+            <table>
+                <tr>
+                    <td>Project Name:</td>
+                    <td style="width: 7in"><%= ProjectName %></td>
+                </tr>
+                <tr>
+                    <td>Project Address:&nbsp;</td>
+                    <td><%= ProjectAddress %></td>
+                </tr>
+                <tr>
+                    <td>Client:</td>
+                    <td><%= Client %></td>
+                </tr>
+                <tr>
+                    <td>Architect:</td>
+                    <td><%= Architect %></td>
+                </tr>
+                <tr>
+                    <td>Date Sent:</td>
+                    <td><%= DateSent %></td>
+                </tr>
+            </table>
+        </div>
+        <div class="h">
+            I. Project Descriptions:
+        </div>
+        <div class="p">
+            <%= ProjectDescriptions %>
+        </div>
+        <div class="p">
+            Gmep understands the project to be as follows (Project):
+        </div>
+        <div class="t1">            
+            <table>
+                <tr>
+                    <td>Scope of Mechanical engineering</td>
+                </tr>
+            </table>
+        </div>
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Provide design options to the team regarding the duct routing and equipment selection</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Provide mechanical ventilation per mechanical code & ASHRAE 62.1 & 62.2 requirements</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Provide demand ventilation requirement if any exists</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Verify the fire rating plan from the architect and provide fire dampers and fire/smoke dampers as needed</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Provide ventilation or temperature control for elevator rooms, machine rooms, electrical rooms per the equipment specification from the client</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>Provide Manual JDS calculation per energy code requirement</td>
+                </tr>
+                <tr>
+                    <td>7.</td>
+                    <td>Coordinate with architect for shaft/chase location and required soffit for duct runs.</td>
+                </tr>
+                <tr>
+                    <td>8.</td>
+                    <td>Provide air distribution design per the architectural background</td>
+                </tr>
+                <%= if (HasGarageExhaust) { %>     
+                 <tr>
+                    <td>9.</td>
+                    <td>Provide garage exhaust design if any</td>
+                </tr>    
+                <% } %>        
+            </table>
+        </div>
+        
+        <%= if (HasGarageExhaust) { %>  
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>a.</td>
+                    <td>Openings are less than 40% of total perimeter length</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="t3">
+            <table>
+                <tr>
+                    <td>i.</td>
+                    <td>Option 1: provide exhaust duct with exhaust grill every 50 feet</td>
+                </tr>
+                <tr>
+                    <td>ii.</td>
+                    <td>Option 2: CFD simulation such that you can be exempt from option 1 requirement ($3200)</td>
+                </tr>
+                <tr>
+                    <td>iii.</td>
+                    <td>Provide CFD simulation for garage exhaust to be exempt from providing an exhaust grille every 50 feet.</td>
+                </tr>
+            </table>
+        </div>
+        <% } %>
+        
+        <%= if (HasCommercialShellConnection) { %>
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>10.</td>
+                    <td>Provide duct connection for commercial shell work. (OSA duct, exhaust duct, HVAC equipment place holder, make-up air duct, etc.)</td>
+                </tr>
+            </table>
+        </div>
+        <% } %>
+        <div class="p">
+            Scope of Electrical engineering
+        </div>        
+
+        <div class="t2">
+            <table>
+                <%= number = 1 %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide electrical load calculations</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide options for equipment layout in electrical rooms</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide single line diagram and demonstrate electrical power distribution concept</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide panel schedules</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide electrical circuits, electrical outlet location per code requirement</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide lighting control per code requirement</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide load calculation and single line diagram to dry utility consultant (Our work is after the electrical pull section. Any design/coordination work before the electrical pull section is not included.)</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide electrical power plan and electrical lighting plans per architectural floor plan and reflected ceiling plan (if there is no reflected ceiling plan, we will provide generic drawing. Any lighting revision after we generate the plan will be chargeable; We do not show homeruns on plans for dwelling units but we show homeruns for other common areas.)</td>
+                </tr>
+                <% number++; %>
+                <% if (HasIndoorCommonArea) { %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide indoor lighting compliance forms for common area.</td>
+                </tr>
+                <% number++; } %>
+                <% if (HasEmergencyPower) { %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide power design for emergency power system and provide emergency light circuitry as needed</td>
+                </tr>
+                <% number++; } %>
+                
+                <%= if (HasCommercialShellConnection) { %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide electrical conduit stub out to commercial spaces</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Load estimation for each commercial space</td>
+                </tr>
+                <% number++; } %>                
+                <%= if (HasSiteLighting) { %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Site lighting and photometric</td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+        <div class="p">
+            Scope of Plumbing engineering
+        </div>    
+        <div class="t2">
+            <table>
+                <%= number = 1 %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Coordinate with architect for plumbing wall location, sump pit location, chase location, etc</td>
+                </tr>                
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide water calculation based on the flow test report from the client</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Calculate the capacity of water heater and select water heate</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Coordinate with mechanical engineers for flue duct routing</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide cold/hot water design and size the pipes (our work is after the water meter. All design/coordination work before the meter is not included.)</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide Gas pipe design and size the pipes per plumbing code schedule 40 pipes (If the contractor wants to use other pipes such as CSST, the contractor must provide us the pipe specifications and we will charge redesign fee)</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide sewer/vent design (Our design work is after the point of connection as indicated by the civil engineer, which is within 10 feet from the building foot print)</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide plumbing details</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide fire penetration details to match architectural drawings</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Provide isometric diagram if required by the city</td>
+                </tr>
+                <% number++; %>                
+                <% if (HasIndoorCommonArea) { %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>General specification for plumbing materials, plumbing fixtures in public area (plumbing fixtures in dwelling area will be specified by the client)</td>
+                </tr>
+                <% number++; } %>                
+                <%= if (HasCommercialShellConnection) { %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Water, gas, sewer, grease stub out for future commercial spaces</td>
+                </tr>
+                <% number++; %>
+                <tr>
+                    <td><%= number %>.</td>
+                    <td>Size grease interceptor for future commercial. (If needed)</td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
+        <% if (HasStructural) { %>    
+        <div class="p">
+            Scope of Structural engineering
+        </div>
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Review the geotechnical report and define the foundation type</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Define structural framing depths.</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Perform structural analysis and design for all gravity and lateral-load resisting elements.</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Structural plans, details and calculations.</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Building structural upgrades to comply with code</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>Concrete foundation, wood structure above</td>
+                </tr>
+            </table>
+        </div> 
+        <% } %>   
+        <div class="p">
+            Title 24 Calculation
+        </div>
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Model the building envelope and building system by latest EnergyPro.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Provide client two or three options for equipment efficiencies and building envelope insulations to achieve the client required energy performance.</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Generate the report in PDF format</td>
+                </tr>
+            </table>
+        </div>    
+        <div class="h">
+            II. Scope of Work:
+        </div>
+        <div class="p">
+            GMEP will provide only the following <%= ScopeDepartmentList %> engineering services for the project (Basic Services):
+        </div>
+        <div class="t1">
+            <table>
+                <tr>
+                    <td><u>A.</u></td>
+                    <td><u>Feasibility & Programming Phase:</u></td>
+                </tr>
+            </table>
+        </div>   
+        <div class="t2">
+           <table>                
+                <% number = 1; %>
+                <% if (NumMeetings && NumMeetings > 0) { %>
+                <tr>
+                    <td><%= number.toString() %>.</td>
+                    <td>Meet 
+                        <% if (NumMeetings === 1) { %>
+                        once
+                        <% } else { %>
+                        <%= NumMeetings %> times
+                        <% } %>
+                        with the Architect, Client, and other project consultants to discuss project goals and discuss and establish Project program requirements and any other preliminary design criteria</td>
+                </tr>
+                <% number++; } %>
+                <tr>
+                    <td><%= number.toString() %>.</td>
+                    <td>Visit the site to visually observe existing spaces and discuss utility requirements</td>
+                </tr>
+                <% number++; %>   
+                <tr>
+                    <td><%= number.toString() %>.</td>
+                    <td>Deliverables:</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t3">
+            <table>
+                <tr>
+                    <td>i.</td>
+                    <td>Prepare initial recommendations consistent with Project program</td>
+                </tr>
+                <% if (HasInitialRecommendationsMeeting) {  %>
+                <tr>
+                    <td class="t3-label">ii.</td>
+                    <td>One meeting with Client to discuss GMEP’s initial recommendations</td>
+                </tr>
+                <% } %>
+            </table>
+        </div>  
+        <div class="t1">
+            <table>
+                <tr>
+                    <td><u>B.</u></td>
+                    <td><u>Schematic Design Services:</u></td>
+                </tr>
+            </table>
+        </div>   
+        <div class="t2">
+            <table>
+                <% number = 1; %>
+                <tr>
+                    <td><%= number.toString() %>.</td>
+                    <td>Confer with the Architect, Client, and other Project consultants to define design criteria, design and scope of work</td>
+                </tr>
+                <% number++; %>                
+                <tr>
+                    <td><%= number.toString() %>.</td>
+                    <td>If provided by Client, review “as built” record documentation for Project and, if necessary, visiting site to confirm observable existing conditions</td>
+                </tr>
+                <% number++; %>  
+                <% if (!NewConstruction) { %>
+                <tr>
+                    <td>3.</td>
+                    <td>Prepare schematic drawings in GMEP’s standard format and level of detail</td>
+                </tr>
+                <% number++; } %>
+                <tr>
+                    <td><%= number.toString() %>.</td>
+                    <td>Prepare initial specifications</td>
+                </tr>
+                <% number++; %>   
+                <tr>
+                    <td><%= number.toString() %>.</td>
+                    <td>Deliverables:</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t3">
+            <table>
+                <tr>
+                    <td>i.</td>
+                    <td>Provide preliminary calculations</td>
+                </tr>
+                <tr>
+                    <td>ii.</td>
+                    <td>Schematic drawings in pdf</td>
+                </tr>
+                <tr>
+                    <td>iii.</td>
+                    <td>Initial (general) specifications</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t1">
+            <table>
+                <tr>
+                    <td><u>C.</u></td>
+                    <td><u>Design Development Services:</u></td>
+                </tr>
+            </table>
+        </div>   
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Prepare approximate sizes and space requirements for new equipment.</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Prepare design development plans in the GMEP’s standard format and level of detail</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Deliverables:</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t3">
+            <table>
+                <tr>
+                    <td>i.</td>
+                    <td>Update preliminary calculations</td>
+                </tr>
+                <tr>
+                    <td>ii.</td>
+                    <td>Design development drawings in pdf</td>
+                </tr>
+                <tr>
+                    <td>iii.</td>
+                    <td>Approximate sizes and space requirements for new equipment</td>
+                </tr>
+                <tr>
+                    <td>iv.</td>
+                    <td>Update specifications</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t1">
+            <table>
+                <tr>
+                    <td><u>D.</u></td>
+                    <td><u>Construction Document Services:</u></td>
+                </tr>
+            </table>
+        </div>   
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Finalize sizes and space requirements for all new equipment</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Prepare construction documents, in the GMEP’s standard format and level of detail, suitable for obtaining a building permit in accordance with the local building department and /or governing authority</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Respond to plan check corrections from the AHJ (authority having jurisdiction) pertaining to GMEP’s scope of work to assist in obtaining plan check approval</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Deliverables:</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t3">
+            <table>
+                <tr>
+                    <td>i.</td>
+                    <td>Construction documents in pdf format</td>
+                </tr>
+                <tr>
+                    <td>ii.</td>
+                    <td>Update specifications</td>
+                </tr>
+                <tr>
+                    <td>iii.</td>
+                    <td>Final size and space requirements for all new equipment</td>
+                </tr>
+            </table>
+        </div>  
+
+        <div class="t1">
+            <table>
+                <tr>
+                    <td><u>E.</u></td>
+                    <td><u>Construction Administration Services:</u></td>
+                </tr>
+            </table>
+        </div>   
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>During bidding:</td>
+                </tr>                
+            </table>
+        </div>  
+        <div class="t3">
+            <table>
+                <tr>
+                    <td>i.</td>
+                    <td>Provide construction document interpretations, clarifications, and supplement documentation, as reasonably required to support GMEP’s design intent</td>
+                </tr>
+                <tr>
+                    <td>ii.</td>
+                    <td>Provide responses to pre-bid inquiries from prospective bidders regarding GMEP’s construction documents and specifications</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>2.</td>
+                    <td>Review shop drawings, submittals and samples furnished by the Contractor pursuant to the industry-standard protocol</td>
+                </tr>                
+            </table>
+        </div> 
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>3.</td>
+                    <td>Respond to contractor’s requests for information</td>
+                </tr>                
+            </table>
+        </div> 
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>4.</td>
+                    <td>Construction administration phase not to exceed (10) hours</td>
+                </tr>                
+            </table>
+        </div>
+        <div class="t1">
+            <table>
+                <tr>
+                    <td><u>F.</u></td>
+                    <td><u>Optional Additional Services Available at an Additional Fee:</u></td>
+                </tr>
+            </table>
+        </div>   
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Expedited service</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Designs of alternate systems after completion of initial design</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Frame walk changes</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>As-built changes caused by installing trade not following plans</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Architectural design changes after completion of engineering</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>Review and response to a supplemental plan review by a non-AHJ or 3rd party reviewer’s comments (at the Principal Engineer’s rate per the Fee Schedule)</td>
+                </tr>
+                <tr>
+                    <td>7.</td>
+                    <td>Revisions arising from a 3rd party reviewer’s comments (per Fee Schedule)</td>
+                </tr>
+                <tr>
+                    <td>8.</td>
+                    <td>Revisions arising from other consultant’s plan check comments (per Fee Schedule)</td>
+                </tr>
+                <tr>
+                    <td>9.</td>
+                    <td>Structural Engineering</td>
+                </tr>
+                <tr>
+                    <td>10.</td>
+                    <td>BIM/Revit modeling</td>
+                </tr>
+                <tr>
+                    <td>11.</td>
+                    <td>Services resulting from significant changes in the scope of the Project, owner changes, or errors or omissions of consultants or contractors not retained by GMEP</td>
+                </tr>
+                <tr>
+                    <td>12.</td>
+                    <td>Photometric reports</td>
+                </tr>
+                <tr>
+                    <td>13.</td>
+                    <td>Site lighting</td>
+                </tr>
+                <tr>
+                    <td>14.</td>
+                    <td>Solar PV Design</td>
+                </tr>
+                <tr>
+                    <td>15.</td>
+                    <td>Early procurement packages separate from the construction document packages</td>
+                </tr>
+                <tr>
+                    <td>16.</td>
+                    <td>Out of area travel</td>
+                </tr>
+                <tr>
+                    <td>17.</td>
+                    <td>Record drawings</td>
+                </tr>
+                <tr>
+                    <td>18.</td>
+                    <td>Additional meetings per client’s request</td>
+                </tr>
+            </table>
+        </div>  
+        <div class="t1">
+            <table>
+                <tr>
+                    <td><u>G.</u></td>
+                    <td><u>Services Not Included:</u></td>
+                </tr>
+            </table>
+        </div>   
+        <div class="t2">
+            <table>
+                <tr>
+                    <td>1.</td>
+                    <td>Any service not specifically included as a Basic Service</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td>Utility coordination with municipalities, fire alarm design, AV systems</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td>Temporary power design or documentation</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td>Value engineering services, opinions of probable cost</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td>Geotechnical or food service engineering</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td>Architectural services</td>
+                </tr>
+                <tr>
+                    <td>7.</td>
+                    <td>Fire Protection</td>
+                </tr>
+                <tr>
+                    <td>8.</td>
+                    <td>Street lighting, signalization drawings or specifications</td>
+                </tr>
+                <tr>
+                    <td>9.</td>
+                    <td>Dimensions and elevations for in-scope devices</td>
+                </tr>
+                <tr>
+                    <td>10.</td>
+                    <td>Off-site work</td>
+                </tr>
+                <tr>
+                    <td>11.</td>
+                    <td>Pool/water features</td>
+                </tr>
+                <tr>
+                    <td>12.</td>
+                    <td>Dewatering systems</td>
+                </tr>
+                <tr>
+                    <td>13.</td>
+                    <td>Payment of project-related fees including without limitation Plan Check fees, Permit fees, and Utility Company fees, or fees of any kind</td>
+                </tr>
+                <tr>
+                    <td>14.</td>
+                    <td>Irrigation systems or site gas piping</td>
+                </tr>
+                <tr>
+                    <td>15.</td>
+                    <td>Investigation of base shell systems to determine deficiencies (e.g., capacity, acoustic, operational, etc.)</td>
+                </tr>
+                <tr>
+                    <td>16.</td>
+                    <td>Formal written report outlining the impacts of applicable local codes and ordinances</td>
+                </tr>
+                <tr>
+                    <td>17.</td>
+                    <td>Physical inspection or inventory of any existing equipment or systems.</td>
+                </tr>
+                
+            </table>
+            </div>
+        <div class="h">
+        III. Items Furnished by the Client:
+        </div>
+        <div class="t1">
+        <table>
+            <tr>
+                <td>1.</td>
+                <td>All backgrounds, and requested architectural details, are to be provided by the Architect in CAD “.dwg” format update deliverables for Revit scope</td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Access to MEP systems during engineering survey (if applicable)</td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Equipment and lighting specifications</td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>As-built drawings (if applicable)</td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>Construction schedule</td>
+            </tr>
+            <tr>
+                <td>6.</td>
+                <td>Scheduling of site meetings and visits. Minimum 5 days in advance</td>
+            </tr>
+            <tr>
+                <td>7.</td>
+                <td>Those additional items requested by GMEP</td>
+            </tr>
+        </table>
+    </div>  
+    <div class="h">
+        IV. Compensation and Fee Schedule:            
+    </div>
+    <div class="t1">
+        <% letter = "A"; %>
+        <table>
+            <tr>
+                <td><%= letter %>.</td>
+                <td class="t1-title-text-td">Total for Basic Services indicated in Scope of Service………………………..$<%= TotalPrice %></td>
+            </tr>
+        </table>
+        <% letter = getNextLetter(letter); %>
+    </div>        
+    <% if (TotalPrice >= 25000) { %>
+    <div class="t1">
+        <table>
+            <tr>
+                <td><%= letter %>.</td>
+                <td class="t1-title-text-td">Project Phases:</td>
+            </tr>
+        </table>
+    </div>
+    <div class="t2">
+        <table>
+            <% number = 1; %>
+            <% if (HasSiteVisit) { %>
+            <tr>
+                <td><%= number %>.</td>
+                <td style="width: 3.25in">Feasibility and Programming Phase</td>
+                <td>=</td>
+                <td>$<u>included</u></td>
+            </tr>
+            <% number++; } %>
+            <tr>
+                <td><%= number %>.</td>
+                <td>Schematic Design Phase 20%</td>
+                <td>=</td>
+                <td>$<u><%= TotalPrice * .2 %></u></td>
+            </tr>
+            <% number++; %>
+            <tr>
+                <td><%= number %>.</td>
+                <td>Design Development Phase 25%</td>
+                <td>=</td>
+                <td>$<u><%= TotalPrice * .25 %></u></td>
+            </tr>
+            <% number++; %>
+            <tr>
+                <td><%= number %>.</td>
+                <td>Construction Documents Phase 50%</td>
+                <td>=</td>
+                <td>$<u><%= TotalPrice * .5 %></u></td>
+            </tr>
+            <% number++; %>
+            <tr>
+                <td><%= number %>.</td>
+                <td>Construction Administration 5%</td>
+                <td>=</td>
+                <td>$<u><%= TotalPrice * .05 %></u></td>
+            </tr>
+        </table>
+    </div>
+    <% letter = getNextLetter(letter); } %>
+    <div class="t1">
+        <table>
+            <tr>
+                <td><%= letter %>.</td>
+                <td>Additional services provided beyond the Basic Services and agreed upon by Client and GMEP will be performed on an hourly basis in accordance with the then current Fee Schedule. The current  fee schedule is shown below:</td>
+            </tr>
+        </table>
+    </div>
+    <div class="t2">
+        <table>
+            <tr>
+                <td>1.</td>
+                <td>Principal Engineer </td>
+                <td>=</td>
+                <td>$<u>370/hour</u></td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Project Manager</td>
+                <td>=</td>
+                <td>$<u>275/hour</u></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Engineer</td>
+                <td>=</td>
+                <td>$<u>185/hour</u></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>Drafter</td>
+                <td>=</td>
+                <td>$<u>130/hour</u></td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>Administrative</td>
+                <td>=</td>
+                <td>$<u>110/hour</u></td>
+            </tr>
+            <tr>
+                <td>6.</td>
+                <td>Site observation</td>
+                <td>=</td>
+                <td>$<u>600</u>/engineer/meeting</td>
+            </tr>
+            <tr>
+                <td>7.</td>
+                <td>Jobsite meeting	</td>
+                <td>=</td>
+                <td>$<u>600</u>/engineer/meeting</td>
+            </tr>
+            <tr>
+                <td>8.</td>
+                <td>Structural observation</td>
+                <td>=</td>
+                <td>$<u>600</u>/trip</td>
+            </tr>
+        </table>
+    </div>
+    <div class="avoid-page-break">
+        <div class="h">
+        V. Payment Schedule:            
+        </div>
+        <div class="t1">
+            <table>
+                <tr>
+                    <td>A.</td>
+                    <td class="t1-title-text-td">Client agrees to pay GMEP for its Services (Basic Services and any additional services) as follows:</td>
+                </tr>
+            </table>
+        </div>
+        <div class="t2">
+            <table>
+                <% if (ClientType === "loyal") { %>
+                    <% if (TotalPrice < 3000) { %>
+                        <tr>
+                            <td>1.</td>
+                            <td>Completion of 1st submittal to the client: 100% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>
+                    <% if (TotalPrice >= 3000 && TotalPrice < 15000) { %>  
+                        <tr>
+                            <td>1.</td>
+                            <td>Completion of 1st submittal to the client: 75% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>                    
+                    <% if (TotalPrice >= 15000 && TotalPrice < 25000) { %>
+                        <tr>
+                            <td>1.</td>
+                            <td>Completion of 50% CD's to the client: 25% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>                    
+                    <% if (TotalPrice >= 25000) { %>
+                        <tr>
+                            <td>1.</td>
+                            <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
+                        </tr>
+                    <% } %>
+                <% } %>
+                <% if (ClientType === "returning") { %>
+                    <% if (TotalPrice < 1000) { %>
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 100% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>
+                    <% if (TotalPrice >= 1000 && TotalPrice < 3000) { %>
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>2.</td>
+                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>
+                    <% if (TotalPrice >= 3000 && TotalPrice < 10000) { %>
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>2.</td>
+                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>3.</td>
+                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>                    
+                    <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %>
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>2.</td>
+                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>3.</td>
+                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice %></td>
+                        </tr>                      
+                        <tr>
+                            <td>4.</td>
+                            <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>                    
+                    <% if (TotalPrice >= 25000) { %> 
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
+                        </tr>
+                    <% } %>
+                <% } %>
+                <% if (ClientType === "new") { %>
+                    <% if (TotalPrice < 2000) { %> 
+                        <tr>
+                            <td>1.</td>
+                            <td>Completion of 1st submittal to the client: 100% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                    <% } %>
+                    <% if (TotalPrice >= 2000 && TotalPrice < 10000) { %> 
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>2.</td>
+                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>  
+                    <% } %>
+                    <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %> 
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>2.</td>
+                            <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                        </tr>                        
+                        <tr>
+                            <td>3.</td>
+                            <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice %></td>
+                        </tr>                      
+                        <tr>
+                            <td>4.</td>
+                            <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice %></td>
+                        </tr>                
+                    <% } %>                   
+                    <% if (TotalPrice >= 25000) { %>  
+                        <tr>
+                            <td>1.</td>
+                            <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice %></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Client agrees to pay monthly progress invoices pertaining to the lump sum in this agreement.</td>
+                        </tr>
+                    <% } %>
+                <% } %>                    
+            </table>
+        </div>
+        <div class="t1">
+            <table>
+                <tr>
+                    <td>B.</td>
+                    <td>Additional meetings/ additional services outside of Basic Service will be billed upon completion and due upon receipt unless otherwise stated on the service amendment.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="h">
+        VI. Reimbursable Expenses
+        </div>
+    <div class="t1">
+        <table>
+            <tr>
+                <td>A.</td>
+                <td>Client agrees to reimburse GMEP for its reasonable costs incurred in providing the Services under this Agreement, plus a 10% mark-up, which reasonable costs include but are not limited to:</td>
+            </tr>            
+        </table>
+    </div>  
+    <div class="t2">
+        <table>
+            <tr>
+                <td>a.</td>
+                <td>Printing, mailing, and shipping costs</td>
+            </tr>
+            <tr>
+                <td>b.</td>
+                <td>Travel to and from the Project site for projects outside of California</td>
+            </tr>
+        </table>
+    </div> 
+    <div class="h">
+        VII. Terms, Conditions and Clarifications of this Agreement:
+    </div>
+    <div class="t1">
+        <table>
+            <tr>
+                <td>1.</td>
+                <td>GMEP will perform its Services under this Agreement in a timely manner consistent with similar engineers providing similar services for similar projects, in accordance with generally and currently accepted engineering principles and practices, and without any warranties either express or implied.</td>
+            </tr>      
+            <tr>
+                <td>2.</td>
+                <td>This proposal is per the information provided by the client on <%= DateDrawingsReceived %>. Prior to starting the project, the client will provide GMEP with final architectural .DWG drawings (ARCH Drawings). The difference between the drawings received on <%= DateDrawingsReceived %> and the ARCH Drawings should be less than 10%. If the difference between the drawings is over 10%, GMEP will review the project and re-assess the project fees.</td>
+            </tr>   
+            <tr>
+                <td>3.</td>
+                <td>GMEP’s engineering Services under this Agreement are limited to the Basic Services outlined in the above scope of work. This includes the review and response to plan check comments from the AHJ (authority having jurisdiction), such as the building department. The review and response to a 3rd party’s comments or other consultant’s plan check comments are excluded from GMEP’s scope of work. If the Client requests this additional service from GMEP, it will be billed T&M per the Principal Engineer’s hourly rate per the Additional Services Fee Schedule.</td>
+            </tr> 
+            <tr>
+                <td>4.</td>
+                <td>GMEP will provide Client with monthly invoices accurately reflecting current expenditures of professional time and/or the progress of the services, as appropriate, and reimbursable expenses. Each invoice will be due and payable upon receipt, and delinquent 30 days after its date. In the event of delinquency, interest shall accrue from the invoice date at 1.5% per month, compounded monthly, or at the highest rate permitted by California law, whichever is lower, with payments applied first to accrued interest. No deductions shall be made from GMEP’s compensation on account of problems or losses for which GMEP has not been held legally liable. GMEP’s fee will be equitably adjusted in the event of significant changes to the Project’s program or scheduling.</td>
+            </tr>     
+            <tr>
+                <td>5.</td>
+                <td>The return of a check (electronic or paper) issued to GMEP will result in a mandatory $25.00 returned check fee.</td>
+            </tr> 
+            <tr>
+                <td>6.</td>
+                <td>Refunds on credit card payments will incur a 5% convenience fee.</td>
+            </tr> 
+            <tr>
+                <td>7.</td>
+                <td>This proposal is good for a period of up to 30 days from the date of the proposal.</td>
+            </tr> 
+            <tr>
+                <td>8.</td>
+                <td>GMEP and Client shall both have the right to terminate this Agreement at any time by giving three (3) days’ prior written notice to the other party, which notice shall specify the effective date of termination. Prior to GMEP being obligated to provide any of its instruments of service provided under this Agreement, Client shall pay GMEP for its services rendered by GMEP through date of termination, including any services GMEP rendered in transferring the files to Client.</td>
+            </tr> 
+            <tr>
+                <td>9.</td>
+                <td>GMEP will participate in any reasonable and appropriate manner in the Client’s coordination of the services of the Project’s various consultants; but Client acknowledges that GMEP lacks the right to control the performance of others and the training and expertise necessary to perform or critique the services of others, and in no event will GMEP have any responsibility for any professional errors or omissions committed by others.</td>
+            </tr>
+            <tr>
+                <td>10.</td>
+                <td>Client shall acquire ownership of GMEP’s deliverables and a transferable, nonexclusive license to use these instruments of service and the designs embodied therein for all Project purposes upon payment for GMEP’s related Services; but no other license or intellectual property rights shall be deemed granted or implied. If Client uses or modifies or allows the use or modification of the drawings or specifications without GMEP’s further involvement or consent, or uses the drawings or specifications for any project for which they were not prepared, Client agrees to release, defend and indemnify GMEP and its affiliated entities and individuals to the fullest extent allowed by law, and even in situations involving any indemnitee’s actual or alleged active negligence or design defects, from and against any and all claims, costs, losses and/or liabilities arising out of or resulting in whole or in part from such use or reuse.</td>
+            </tr>
+            <tr>
+                <td>11.</td>
+                <td>No provision of the Agreement is intended to impose a higher standard of practice higher than that provided for by common law. In particular, and without limitation, GMEP will use its best professional judgment in interpreting and applying the requirements of all laws applicable to the Project such as building codes, accessibility and sustainability requirements, and any applicable functionality standards; but compliance with any law as it may be eventually interpreted by others cannot be guaranteed. In no event will GMEP guarantee cost estimates, schedule projections or the like, or prognostications as to future events including without limitation the discretionary decisions of governmental officials. Further, when used in conjunction with the providing of services pursuant to this Agreement, such terms as “certify,” “warrant,” “confirm,” “verify,” “make sure,” “insure,” “ensure,” “assure,” or the like do not constitute a guarantee, but rather a representation based on professional opinion or judgment.</td>
+            </tr>
+            <tr>
+                <td>12.</td>
+                <td>GMEP will provide at its then current standard hourly fee rates, or as may otherwise be agreed, the following additional services as circumstances may require or Client may direct: (i) revisions to instruments of service which are due to substantial changes in Client’s instructions, to amendments to or changes in the interpretation of the laws and regulations applicable to the Project, to conditions of which GMEP had not been timely informed or to other matters beyond GMEP’s reasonable control; (ii) services necessitated by inadequate or improper co-consultant or contractor performance, unreasonable contractor requests and claims and/or construction accidents or losses; and (iii) such other services as the parties may mutually agree, such as value engineering or special studies.</td>
+            </tr>
+            <tr>
+                <td>13.</td>
+                <td>Towards the mutual goal of a successful project, Client shall make reasonable efforts to cooperate with GMEP including without limitation: (i) designating a single representative with appropriate authority with whom GMEP can deal, and directing all communications to GMEP’s project manager; (ii) providing reasonably timely information regarding Project requirements and conditions, and taking full responsibility for directing GMEP to proceed on any unverified assumptions; (iii) responding to GMEP’s questions and requests for information and approval within a reasonable time; (iv) promptly evaluating GMEP’s invoices and providing written notice of any questions or dissatisfaction, and waiving the right to challenge the accuracy and appropriateness of any invoice for which no such notice has been provided within thirty days of receipt of the notice; (v) warranting that it has or will obtain the intellectual property rights in any materials and designs that it provides to GMEP; (vi) refraining from requesting certifications which would misrepresent the nature or extent of GMEP’s information or services; (vii) having the GMEP designated as an additional indemnitee concerning whatever indemnification obligations Client obtains from any Project contractor; and (viii) providing appropriate arrangements for coordination of the Project’s various design consultants, for construction quality control and for project risk management.</td>
+            </tr>
+            <tr>
+                <td>14.</td>
+                <td>In light of the limited ability of GMEP to affect the risks inherent in the Project, and of the disparity between GMEP’s fees and the potential liability for problems or alleged problems with the Project, Client shall to the fullest extent allowed by law, and in addition to GMEP’s common law rights, release and indemnify GMEP and GMEP’s subconsultants, if any, and their respective affiliated entities and individuals, concerning any and all claims, liability, expenses and/or losses related to the Project (including attorneys and expert fees incurred and the value of professional time expended to address claims or problems) provided, however, that this indemnification shall not apply to any indemnitee to the extent of that indemnitee’s active negligence or willful misconduct. Further and in any event, Client agrees to limit the total aggregate liability concerning or related to the Project of GMEP and GMEP’s subconsultants, if any, and their respective affiliated entities and individuals, on any and all legal and equitable theories and concerning all kinds and causes of loss to the fullest extent allowed by law as to Client and all third parties to the lessor of twice the amount of GMEP’s fee received for the Project or fifty thousand dollars. Because the amount of such damages can neither be controlled nor predicted, each party waives any claim that it has or might have to obtain consequential and/or economic damages from the other concerning or related to the Project and/or this Agreement.</td>
+            </tr>
+            <tr>
+                <td>15.</td>
+                <td>In order to control the risks inherent in GMEP’s professional undertaking pursuant to this Agreement, GMEP’s services are intended to be performed fully and solely by or through GMEP. Unless this Agreement is terminated for GMEP’s material breach, if Client prevents or frustrates GMEP’s full performance of the services or without GMEP’s express consent causes or allows modifications to or deviations from the requirements or recommendations of GMEP’s instruments of service or the use of unfinalized instruments of service for pricing or otherwise, then in addition to GMEP’s common law rights, Client shall release and indemnify GMEP and its affiliated entities and individuals to the fullest extent allowed by law from and concerning any and all claims, costs, losses and/or liability concerning or related to the uncompleted services or the use of modified, deviated from or unfinalized instruments of service.</td>
+            </tr>
+            <tr>
+                <td>16.</td>
+                <td>Client and GMEP both acknowledge that each is a business entity, and that neither intends that either’s involved individuals should be subjected to personal exposure for the risks attendant to the Project; and therefore any and all remedies with either party and its affiliated entities and individuals have or might have concerning the Project and/or this Agreement shall be sought against only the other’s business entity or affiliated business entities and waived as to the affiliated individuals, and in no event shall damages or indemnification concerning this Agreement and/or the Project ever be sought against either party’s affiliated individuals.</td>
+            </tr>
+            <tr>
+                <td>17.</td>
+                <td>Regarding any instruments of service or designs which have been prepared by others and provided to GMEP by Client for use for the Project, Client warrants to GMEP that it has the intellectual property rights, including copyright rights, for such use; and in this regard Client shall to the full extent permitted by law release, indemnify and hold harmless GMEP and GMEP’s subconsultants, and their respective affiliated entities and individuals, from and against any and all claims, costs, liability and/or losses related to or arising out of Client’s actual or alleged breach of this warranty.</td>
+            </tr>
+            <tr>
+                <td>18.</td>
+                <td>GMEP will be legally liable for only the design professional services provided pursuant to this Agreement, and only pursuant to the terms and conditions of this Agreement. In particular, GMEP will not be legally liable for the providing of or the failure to provide legal, accounting, financial analysis services or the like, or unassumed specialty design or engineering services including without limitation soils, geotechnical, environmental, hazardous waste or toxic substance engineering services. Further, and without limitation, GMEP shall not be liable or responsible for delays or other matters beyond its reasonable control, for inaccurate or incomplete information provided by Client or other reasonably reliable sources or for unverified assumptions directed or accepted by Client; for services or instruments of service provided by others even if incorporated into GMEP’s instruments of service for ease of reference or otherwise, for the consequences of cyber-attack or computer failure, for site or Project conditions of which it was not actually and timely informed, for hazardous materials or toxic substances at the Project site, for reasonable interpretations of the Project’s legal requirements and limitations, for the recommendation or specification of products or equipment for purposes consistent with the manufacturer’s published literature or containing toxic substances not disclosed in that literature, or for the actions or inactions of others including other consultants, contractors, utility companies and governmental or quasi-governmental agencies.</td>
+            </tr>
+            <tr>
+                <td>19.</td>
+                <td>Client acknowledges that the Project is of such magnitude and complexity that a budget contingency will be required concerning construction costs that will inevitably be incurred as a result of errors, omissions, ambiguities or inconsistencies in the services and instruments of service; and in this regard Client agrees to make no claim against GMEP or GMEP’s subconsultants, or their respective affiliated entities and individuals, with respect to any delay or disruption or other damages or additional costs incurred concerning such matters to the extent that the total aggregate of the resulting costs does not exceed eight percent of the Project’s overall construction costs.</td>
+            </tr>
+            <tr>
+                <td>20.</td>
+                <td>GMEP and Client shall strive to maintain a good working relationship throughout the duration of the Project; and because of the importance of a good working relationship, either party may terminate this Agreement by giving written notice to the other provided only that such notice is given in the good faith belief that the working relationship is less than satisfactory. Further, GMEP may suspend its performance under this Agreement and withhold or withdraw any instruments of service and related licenses with no liability for so doing at any time if Client allows an GMEP invoice to become delinquent. Further, because they value their respective employees, each party agrees not to directly or indirectly solicit or hire the other’s employees with whom they have dealings concerning the Project during the Project and for two years after Project completion.</td>
+            </tr>
+            <tr>
+                <td>21.</td>
+                <td>This Agreement supersedes all negotiations and prior agreements concerning the Project and is intended as a complete and integrated statement of the entire agreement between Client and GMEP concerning the Project. This Agreement may be modified only by a subsequent written agreement; except that items of GMEP’s Basic Services may be deleted by oral agreement, and offered Additional Services may be requested verbally if subsequently confirmed in writing. This Agreement is being entered into in Orange County, California, and the parties agree to be subject to personal jurisdiction in California for all suits arising under or related to this Agreement; that this Agreement shall be interpreted and enforced under and pursuant to the laws of the State of California, excluding only California’s choice of law rules; and that any unarbitrated disputes will be resolved in the California court system with venue in Orange County, or in a federal court sitting in California as may be appropriate. No party may assign this Agreement or any related rights or obligations without the express written consent of the other. This Agreement is not intended to create any joint venture, partnership, fiduciary or similar relationship between the parties. In the event that Client is unable to meet its financial obligations pursuant to this Agreement, then those entities or individuals who control Client will accept personal responsibility for those obligations. Any and all actual or alleged causes of action concerning any services rendered pursuant to this Agreement, including without limitation those for indemnification, shall be deemed to have accrued for purposes of any statutes of limitation or repose as of the date of GMEP’s last invoice concerning the Project. No failure to exercise or delay in exercising any right under this Agreement shall be construed as a waiver, and no waiver of a breach of any term of this Agreement shall be construed as a waiver of a subsequent breach of the same or other terms. In the event of any claims or disputes concerning this Agreement and/or the Project, each party shall bear its own attorney fees. Each party releases waives any right to recover consequential, economic or any other damages from the other or its affiliated entities and individuals concerning this Agreement or its termination. In the event that this Agreement is for any reason terminated, then its risk allocation and indemnity provisions shall remain in full force and effect. In the event that any provision of this Agreement shall be prohibited by law, then the subject provisions shall not be void, but rather shall be interpreted as operating only to the fullest extent allowed by law; and in the event that any provision of this Agreement shall be partially or totally invalid or unenforceable, then the remaining provision shall remain valid and binding. This Agreement shall be binding upon and inure to the benefit of the parties hereto and their affiliated entities, successors and assigns; but otherwise is not intended to bestow any rights on any third parties.</td>
+            </tr>
+        </table>
+    </div>  
+    <div class="avoid-page-break">
+        <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+            GMEP’s proposed fee for its Basic Services is effective for 15 days from the day of this proposal/agreement.  Please sign in space provided below to signify authorization of GMEP to proceed: 
+        </div>
+        <div><hr/></div>            
+        <table style="width: 100%;">
+            <tr>
+                <td><b>Client:</b></td>
+                <td style="width: 50%;">Signature</td>
+            </tr>
+            <tr>
+                <td><%= ClientContactName %></td>
+                <td></td>
+            </tr>            
+            <tr>
+                <td><%= ClientBusinessName %></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><%= ClientStreetAddress %></td>
+                <td>Date</td>
+            </tr>            
+            <tr>
+                <td><%= ClientCityStateZip %></td>
+                <td></td>
+            </tr>
+        </table>            
+        <div><hr/></div>            
+        <table style="width: 100%;">
+            <tr>
+                <td><b>Consultant:</b></td>
+                <td style="width: 50%;">Signature</td>
+            </tr>
+            <tr>
+                <td>Gary Zhou, President</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>GMEP Engineers,</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>26439 Rancho Pkwy S., Ste#120</td>
+                <td>Date</td>
+            </tr>
+            <tr>
+                <td>Lake Forest, CA 92630</td>
+                <td></td>
+            </tr>
+        </table>
+        
+        <div><hr/></div>
+
+        <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+            Please provide names and email addresses of recipients of invoices:  
+        </div>
+        <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+            Name: ___________________________________	email: _____________________________________
+        </div>
+        <div class="p" style="margin-top: 20pt; margin-bottom: 20pt">
+            Name: ___________________________________	email: _____________________________________
+        </div>      
+    </div>
+</body> 
+</html>
