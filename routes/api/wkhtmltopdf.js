@@ -193,7 +193,8 @@ router.post("/t24", async (req, res) => {
 
   params.ProjectName = req.body.ProjectName;
   params.ProjectAddress = req.body.ProjectAddress;
-  params.TarrarNo = req.body.TarrarNo;
+  params.Client = req.body.Client;
+  params.Architect = req.body.Architect;
   params.DateSent = req.body.DateSent;
 
   params.ClientContactName = req.body.ClientContactName;
