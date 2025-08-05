@@ -641,28 +641,28 @@
                     <td><%= number %>.</td>
                     <td>Schematic Design Phase 20%</td>
                     <td>=</td>
-                    <td>$<u><%= TotalPrice * .2 %></u></td>
+                    <td>$<u><%= TotalPrice * 0.2 %></u></td>
                 </tr>
                 <% number++; %>
                 <tr>
                     <td><%= number %>.</td>
                     <td>Design Development Phase 25%</td>
                     <td>=</td>
-                    <td>$<u><%= TotalPrice * .25 %></u></td>
+                    <td>$<u><%= TotalPrice * 0.25 %></u></td>
                 </tr>
                 <% number++; %>
                 <tr>
                     <td><%= number %>.</td>
                     <td>Construction Documents Phase 50%</td>
                     <td>=</td>
-                    <td>$<u><%= TotalPrice * .5 %></u></td>
+                    <td>$<u><%= TotalPrice * 0.5 %></u></td>
                 </tr>
                 <% number++; %>
                 <tr>
                     <td><%= number %>.</td>
                     <td>Construction Administration 5%</td>
                     <td>=</td>
-                    <td>$<u><%= TotalPrice * .05 %></u></td>
+                    <td>$<u><%= TotalPrice * 0.05 %></u></td>
                 </tr>
             </table>
         </div>
@@ -751,25 +751,25 @@
                         <% if (TotalPrice >= 3000 && TotalPrice < 15000) { %>  
                             <tr>
                                 <td>1.</td>
-                                <td>Completion of 1st submittal to the client: 75% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 1st submittal to the client: 75% of fee: $<%= TotalPrice * 0.75 %></td>
                             </tr>
                             <tr>
                                 <td>2.</td>
-                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice * 0.25 %></td>
                             </tr>
                         <% } %>                    
                         <% if (TotalPrice >= 15000 && TotalPrice < 25000) { %>
                             <tr>
                                 <td>1.</td>
-                                <td>Completion of 50% CD's to the client: 25% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 50% CD's to the client: 25% of fee: $<%= TotalPrice * 0.25 %></td>
                             </tr>
                             <tr>
                                 <td>2.</td>
-                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>
                             <tr>
                                 <td>3.</td>
-                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice * 0.25 %></td>
                             </tr>
                         <% } %>                    
                         <% if (TotalPrice >= 25000) { %>
@@ -789,49 +789,49 @@
                         <% if (TotalPrice >= 1000 && TotalPrice < 3000) { %>
                             <tr>
                                 <td>1.</td>
-                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>                        
                             <tr>
                                 <td>2.</td>
-                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>
                         <% } %>
                         <% if (TotalPrice >= 3000 && TotalPrice < 10000) { %>
                             <tr>
                                 <td>1.</td>
-                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice * 0.25 %></td>
                             </tr>                        
                             <tr>
                                 <td>2.</td>
-                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>                        
                             <tr>
                                 <td>3.</td>
-                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice %></td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 25% of fee: $<%= TotalPrice 0.25 %></td>
                             </tr>
                         <% } %>                    
                         <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %>
                             <tr>
                                 <td>1.</td>
-                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice * 0.25 %></td>
                             </tr>                        
                             <tr>
                                 <td>2.</td>
-                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>                        
                             <tr>
                                 <td>3.</td>
-                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice %></td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice * 0.15 %></td>
                             </tr>                      
                             <tr>
                                 <td>4.</td>
-                                <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice %></td>
+                                <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice * 0.1 %></td>
                             </tr>
                         <% } %>                    
                         <% if (TotalPrice >= 25000) { %> 
                             <tr>
                                 <td>1.</td>
-                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice %></td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice * RetainerPercent %></td>
                             </tr>
                             <tr>
                                 <td>2.</td>
@@ -849,35 +849,35 @@
                         <% if (TotalPrice >= 2000 && TotalPrice < 10000) { %> 
                             <tr>
                                 <td>1.</td>
-                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>                        
                             <tr>
                                 <td>2.</td>
-                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>  
                         <% } %>
                         <% if (TotalPrice >= 10000 && TotalPrice < 25000) { %> 
                             <tr>
                                 <td>1.</td>
-                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice %></td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: 25% of fee: $<%= TotalPrice * 0.25 %></td>
                             </tr>                        
                             <tr>
                                 <td>2.</td>
-                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice %></td>
+                                <td>Completion of 1st submittal to the client: 50% of fee: $<%= TotalPrice * 0.5 %></td>
                             </tr>                        
                             <tr>
                                 <td>3.</td>
-                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice %></td>
+                                <td>At the time the <b>1st plan check is completed</b> <u>or</u> 60 days after the first submittal, whichever comes first. 15% of fee: $<%= TotalPrice * 0.15 %></td>
                             </tr>                      
                             <tr>
                                 <td>4.</td>
-                                <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice %></td>
+                                <td>At the time the <b>2st plan check is completed</b> <u>or</u> 90 days after the first submittal, whichever comes first. 10% of fee: $<%= TotalPrice * 0.1 %></td>
                             </tr>                
                         <% } %>                   
                         <% if (TotalPrice >= 25000) { %>  
                             <tr>
                                 <td>1.</td>
-                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice %></td>
+                                <td>Deposit due upon signing contract, paid prior to proceeding with the work: <%= RetainerPercent %>% of fee: $<%= TotalPrice * RetainerPercent %></td>
                             </tr>
                             <tr>
                                 <td>2.</td>
