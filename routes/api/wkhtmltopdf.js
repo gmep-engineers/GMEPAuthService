@@ -91,6 +91,25 @@ const getNextRomanNumeral = function (romanNumeral) {
   return romanNumerals[index + 1];
 };
 
+const feeToHours = function (fee) {
+  if (fee <= 2000) {
+    return 1;
+  }
+  if (fee <= 5000) {
+    return 1.5;
+  }
+  if (fee <= 10000) {
+    return 4;
+  }
+  if (fee <= 20000) {
+    return 10;
+  }
+  if (fee <= 50000) {
+    return 20;
+  }
+  return -1;
+};
+
 router.post("/commercial", async function (req, res, next) {
   var filename = "commercial-proposal-template.ejs";
 
@@ -112,6 +131,7 @@ router.post("/commercial", async function (req, res, next) {
   params.StructuralDescriptions = req.body.StructuralDescriptions;
 
   params.TotalPrice = req.body.TotalPrice;
+  params.hours = feeToHours(parseInt(params.TotalPrice));
 
   params.ClientType = req.body.ClientType;
 
@@ -228,6 +248,7 @@ router.post("/residential", async (req, res) => {
   params.StructuralDescriptions = req.body.StructuralDescriptions;
 
   params.TotalPrice = req.body.TotalPrice;
+  params.hours = feeToHours(parseInt(params.TotalPrice));
 
   params.ClientType = req.body.ClientType;
 
