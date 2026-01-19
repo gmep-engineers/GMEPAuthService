@@ -6,6 +6,7 @@ var logger = require("morgan");
 var userRouter = require("./routes/api/user");
 var sessionRouter = require("./routes/api/session");
 var wkhtmltopdfRouter = require("./routes/api/wkhtmltopdf");
+var netsuiteRouter = require("./routes/api/netsuite");
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/user", userRouter);
 app.use("/api/session", sessionRouter);
 app.use("/api/wkhtmltopdf", wkhtmltopdfRouter);
+app.use("/api/netsuite", netsuiteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
