@@ -116,8 +116,8 @@ const formatPhone = function (phone) {
   }
   if (phone.length === 10) {
     const areaCode = phone.slice(0, 3);
-    const prefix = phone.slice(3, 7);
-    const suffix = phone.slice(7, 10);
+    const prefix = phone.slice(3, 6);
+    const suffix = phone.slice(6, 10);
     return `${areaCode}-${prefix}-${suffix}`;
   } else {
     return phone;
