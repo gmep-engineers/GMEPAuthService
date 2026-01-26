@@ -422,7 +422,8 @@
             <td>4.</td>
             <td>
               Construction administration phase not to exceed (<%= MaxAdminHours
-              %>) hours
+              %>) <% if (MaxAdminHours === 1) { %> hour <% } else { %> hours <%
+              } %>
             </td>
           </tr>
         </table>

@@ -148,13 +148,13 @@ router.post("/commercial", async function (req, res, next) {
   if (!req.body.BudgetedAdminHours) {
     params.BudgetedAdminHours = feeToHours(parseInt(params.TotalPrice));
   } else {
-    params.BudgetedAdminHours = req.body.BudgetedAdminHours;
+    params.BudgetedAdminHours = parseInt(req.body.BudgetedAdminHours);
   }
 
   if (!req.body.MaxAdminHours) {
     params.MaxAdminHours = 10;
   } else {
-    params.MaxAdminHours = req.body.MaxAdminHours;
+    params.MaxAdminHours = parseInt(req.body.MaxAdminHours);
   }
 
   params.ClientType = req.body.ClientType;
@@ -276,13 +276,13 @@ router.post("/residential", async (req, res) => {
   if (!req.body.BudgetedAdminHours) {
     params.BudgetedAdminHours = feeToHours(parseInt(params.TotalPrice));
   } else {
-    params.BudgetedAdminHours = req.body.BudgetedAdminHours;
+    params.BudgetedAdminHours = parseInt(req.body.BudgetedAdminHours);
   }
 
   if (!req.body.MaxAdminHours) {
     params.MaxAdminHours = 10;
   } else {
-    params.MaxAdminHours = req.body.MaxAdminHours;
+    params.MaxAdminHours = parseInt(req.body.MaxAdminHours);
   }
 
   params.ClientType = req.body.ClientType;

@@ -645,7 +645,7 @@
             <table>
                 <tr>
                     <td>4.</td>
-                    <td>Construction administration phase not to exceed (<%= MaxAdminHours %>) hours</td>
+                    <td>Construction administration phase not to exceed (<%= MaxAdminHours %>) <% if (MaxAdminHours === 1) { %> hour <% } else { %> hours <% } %></td>
                 </tr>                
             </table>
         </div>
