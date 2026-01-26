@@ -163,15 +163,14 @@ router.post("/commercial", async function (req, res, next) {
 
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
-  }
-  if (ScopeDepartmentList.length === 2) {
+  } else if (ScopeDepartmentList.length === 2) {
     params.ScopeDepartmentList = `${ScopeDepartmentList[0]} and ${ScopeDepartmentList[1]}`;
-  }
-  if (ScopeDepartmentList.length === 3) {
+  } else if (ScopeDepartmentList.length === 3) {
     params.ScopeDepartmentList = `${ScopeDepartmentList[0]}, ${ScopeDepartmentList[1]}, and ${ScopeDepartmentList[2]}`;
-  }
-  if (ScopeDepartmentList.length === 4) {
+  } else if (ScopeDepartmentList.length === 4) {
     params.ScopeDepartmentList = `${ScopeDepartmentList[0]}, ${ScopeDepartmentList[1]}, ${ScopeDepartmentList[2]}, and ${ScopeDepartmentList[3]}`;
+  } else {
+    return res.status(400).send({ error: "scope department list empty" });
   }
 
   params.NumMeetings = req.body.NumMeetings;
@@ -280,15 +279,14 @@ router.post("/residential", async (req, res) => {
 
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
-  }
-  if (ScopeDepartmentList.length === 2) {
+  } else if (ScopeDepartmentList.length === 2) {
     params.ScopeDepartmentList = `${ScopeDepartmentList[0]} and ${ScopeDepartmentList[1]}`;
-  }
-  if (ScopeDepartmentList.length === 3) {
+  } else if (ScopeDepartmentList.length === 3) {
     params.ScopeDepartmentList = `${ScopeDepartmentList[0]}, ${ScopeDepartmentList[1]}, and ${ScopeDepartmentList[2]}`;
-  }
-  if (ScopeDepartmentList.length === 4) {
+  } else if (ScopeDepartmentList.length === 4) {
     params.ScopeDepartmentList = `${ScopeDepartmentList[0]}, ${ScopeDepartmentList[1]}, ${ScopeDepartmentList[2]}, and ${ScopeDepartmentList[3]}`;
+  } else {
+    return res.status(400).send({ error: "scope department list empty" });
   }
 
   params.NumMeetings = req.body.NumMeetings;
