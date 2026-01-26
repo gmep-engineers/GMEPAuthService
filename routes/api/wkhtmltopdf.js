@@ -110,6 +110,20 @@ const feeToHours = function (fee) {
   return -1;
 };
 
+const formatPhone = function (phone) {
+  if (!phone) {
+    return "";
+  }
+  if (phone.length === 10) {
+    const areaCode = phone.slice(0, 3);
+    const prefix = phone.slice(3, 7);
+    const suffix = phone.slice(7, 10);
+  } else {
+    return phone;
+  }
+  return `${areaCode}-${prefix}-${suffix}`;
+};
+
 router.post("/commercial", async function (req, res, next) {
   var filename = "commercial-proposal-template.ejs";
 
@@ -231,7 +245,7 @@ router.post("/t24", async (req, res) => {
   params.ClientStreetAddress = req.body.ClientStreetAddress;
   params.ClientCityStateZip = req.body.ClientCityStateZip;
   params.ClientEmail = req.body.ClientEmail;
-  params.ClientPhone = req.body.ClientPhone;
+  params.ClientPhone = formatPhone(req.body.ClientPhone);
 
   params.DateDrawingsReceived = req.body.DateDrawingsReceived;
 
@@ -282,7 +296,7 @@ router.post("/residential", async (req, res) => {
   params.ClientStreetAddress = req.body.ClientStreetAddress;
   params.ClientCityStateZip = req.body.ClientCityStateZip;
   params.ClientEmail = req.body.ClientEmail;
-  params.ClientPhone = req.body.ClientPhone;
+  params.ClientPhone = formatPhone(req.body.ClientPhone);
 
   params.DateDrawingsReceived = req.body.DateDrawingsReceived;
 
