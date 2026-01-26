@@ -87,10 +87,12 @@
             <td>Client:</td>
             <td><%= Client %></td>
           </tr>
+          <% if (Architect) { %>
           <tr>
             <td>Architect:</td>
             <td><%= Architect %></td>
           </tr>
+          <% } %>
           <tr>
             <td>Date Sent:</td>
             <td><%= DateSent %></td>
@@ -418,7 +420,10 @@
           </tr>
           <tr>
             <td>4.</td>
-            <td>Construction administration phase not to exceed (10) hours</td>
+            <td>
+              Construction administration phase not to exceed (<%= MaxAdminHours
+              %>) hours
+            </td>
           </tr>
         </table>
       </div>
@@ -554,9 +559,9 @@
             <td><%= number.toString() %>.</td>
             <td>
               The total coordination time before generating CD's (construction
-              documents) is budgeted to be less than <%= hours %> hours. Any
-              extra time will be billed per the hourly rate on the Fee Schedule
-              below.
+              documents) is budgeted to be less than <%= BudgetedAdminHours %>
+              hours. Any extra time will be billed per the hourly rate on the
+              Fee Schedule below.
             </td>
           </tr>
         </table>
@@ -1514,33 +1519,6 @@
           below to signify authorization of GMEP to proceed:
         </div>
         <div><hr /></div>
-        <!--
-        <%= if (RfpContactName && RfpContactName !== ClientContactName) { %>
-        <table style="width: 100%">
-          <tr>
-            <td><b>Client:</b></td>
-            <td style="width: 50%">Signature</td>
-          </tr>
-          <tr>
-            <td><%= RfpContactName %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><%= RfpBusinessName %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><%= RfpStreetAddress %></td>
-            <td>Date</td>
-          </tr>
-          <tr>
-            <td><%= RfpCityStateZip %></td>
-            <td></td>
-          </tr>
-        </table>
-        <div><hr /></div>
-        <% } %>
-        -->
         <table style="width: 100%">
           <tr>
             <td><b>Client:</b></td>
@@ -1560,6 +1538,14 @@
           </tr>
           <tr>
             <td><%= ClientCityStateZip %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= ClientEmail %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= ClientPhone %></td>
             <td></td>
           </tr>
         </table>

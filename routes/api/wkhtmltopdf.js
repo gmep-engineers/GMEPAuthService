@@ -131,7 +131,17 @@ router.post("/commercial", async function (req, res, next) {
   params.StructuralDescriptions = req.body.StructuralDescriptions;
 
   params.TotalPrice = req.body.TotalPrice;
-  params.hours = feeToHours(parseInt(params.TotalPrice));
+  if (!req.body.BudgetedAdminHours) {
+    params.BudgetedAdminHours = feeToHours(parseInt(params.TotalPrice));
+  } else {
+    params.BudgetedAdminHours = req.body.BudgetedAdminHours;
+  }
+
+  if (!req.body.MaxAdminHours) {
+    params.MaxAdminHours = 10;
+  } else {
+    params.MaxAdminHours = req.body.MaxAdminHours;
+  }
 
   params.ClientType = req.body.ClientType;
 
@@ -220,6 +230,8 @@ router.post("/t24", async (req, res) => {
   params.ClientBusinessName = req.body.ClientBusinessName;
   params.ClientStreetAddress = req.body.ClientStreetAddress;
   params.ClientCityStateZip = req.body.ClientCityStateZip;
+  params.ClientEmail = req.body.ClientEmail;
+  params.ClientPhone = req.body.ClientPhone;
 
   params.DateDrawingsReceived = req.body.DateDrawingsReceived;
 
@@ -247,7 +259,17 @@ router.post("/residential", async (req, res) => {
   params.StructuralDescriptions = req.body.StructuralDescriptions;
 
   params.TotalPrice = req.body.TotalPrice;
-  params.hours = feeToHours(parseInt(params.TotalPrice));
+  if (!req.body.BudgetedAdminHours) {
+    params.BudgetedAdminHours = feeToHours(parseInt(params.TotalPrice));
+  } else {
+    params.BudgetedAdminHours = req.body.BudgetedAdminHours;
+  }
+
+  if (!req.body.MaxAdminHours) {
+    params.MaxAdminHours = 10;
+  } else {
+    params.MaxAdminHours = req.body.MaxAdminHours;
+  }
 
   params.ClientType = req.body.ClientType;
 
@@ -259,6 +281,8 @@ router.post("/residential", async (req, res) => {
   params.ClientBusinessName = req.body.ClientBusinessName;
   params.ClientStreetAddress = req.body.ClientStreetAddress;
   params.ClientCityStateZip = req.body.ClientCityStateZip;
+  params.ClientEmail = req.body.ClientEmail;
+  params.ClientPhone = req.body.ClientPhone;
 
   params.DateDrawingsReceived = req.body.DateDrawingsReceived;
 

@@ -86,10 +86,12 @@
                     <td>Client:</td>
                     <td><%= Client %></td>
                 </tr>
+                <% if (Architect) { %>
                 <tr>
                     <td>Architect:</td>
                     <td><%= Architect %></td>
                 </tr>
+                <% } %>
                 <tr>
                     <td>Date Sent:</td>
                     <td><%= DateSent %></td>
@@ -643,7 +645,7 @@
             <table>
                 <tr>
                     <td>4.</td>
-                    <td>Construction administration phase not to exceed (10) hours</td>
+                    <td>Construction administration phase not to exceed (<%= MaxAdminHours %>) hours</td>
                 </tr>                
             </table>
         </div>
@@ -731,7 +733,7 @@
                 </tr>                
                 <tr>
                     <td>19.</td>
-                    <td>The total coordination time before generating CD's (construction documents) is budgeted to be less than <%= hours %> hours. Any extra time will be billed per the hourly rate on the Fee Schedule below.</td>
+                    <td>The total coordination time before generating CD's (construction documents) is budgeted to be less than <%= BudgetedAdminHours %> hours. Any extra time will be billed per the hourly rate on the Fee Schedule below.</td>
                 </tr>
             </table>
         </div>  
