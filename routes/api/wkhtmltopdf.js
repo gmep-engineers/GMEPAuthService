@@ -118,10 +118,10 @@ const formatPhone = function (phone) {
     const areaCode = phone.slice(0, 3);
     const prefix = phone.slice(3, 7);
     const suffix = phone.slice(7, 10);
+    return `${areaCode}-${prefix}-${suffix}`;
   } else {
     return phone;
   }
-  return `${areaCode}-${prefix}-${suffix}`;
 };
 
 router.post("/commercial", async function (req, res, next) {
