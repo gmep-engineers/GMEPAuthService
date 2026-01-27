@@ -733,7 +733,13 @@
                 </tr>                
                 <tr>
                     <td>19.</td>
-                    <td>The total coordination time before generating CD's (construction documents) is budgeted to be less than <%= BudgetedAdminHours %> hours. Any extra time will be billed per the hourly rate on the Fee Schedule below.</td>
+                    <td>The total coordination time before generating CD's (construction documents) is budgeted to be less than <%= BudgetedAdminHours %> 
+                        <% if (BudgetedAdminHours === 1) { %>
+                        hour
+                        <% } else { %>
+                        hours
+                        <% } %>
+                        . Any extra time will be billed per the hourly rate on the Fee Schedule below.</td>
                 </tr>
             </table>
         </div>  
