@@ -168,6 +168,9 @@ router.post("/commercial", async function (req, res, next) {
   params.ClientStreetAddress = req.body.ClientStreetAddress;
   params.ClientCityStateZip = req.body.ClientCityStateZip;
 
+  params.ClientEmail = req.body.ClientEmail;
+  params.ClientPhone = formatPhone(req.body.ClientPhone);
+
   params.DateDrawingsReceived = req.body.DateDrawingsReceived;
 
   var ScopeDepartmentList = [];
@@ -244,8 +247,6 @@ router.post("/t24", async (req, res) => {
   params.ClientBusinessName = req.body.ClientBusinessName;
   params.ClientStreetAddress = req.body.ClientStreetAddress;
   params.ClientCityStateZip = req.body.ClientCityStateZip;
-  params.ClientEmail = req.body.ClientEmail;
-  params.ClientPhone = formatPhone(req.body.ClientPhone);
 
   params.DateDrawingsReceived = req.body.DateDrawingsReceived;
 
