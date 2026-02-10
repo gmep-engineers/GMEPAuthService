@@ -5,6 +5,7 @@ var fs = require("fs");
 var path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const ejs = require("ejs");
+const paymentScheduleTable = require("../../components/paymentScheduleTable");
 
 const finalize = async function (req, res, filename, params) {
   const templateId = uuidv4();
@@ -212,6 +213,8 @@ router.post("/commercial", async function (req, res, next) {
 
   params.getNextRomanNumeral = getNextRomanNumeral;
 
+  params.htmlPaymentScheduleTable = await paymentScheduleTable(params);
+
   await finalize(req, res, filename, params);
 });
 
@@ -346,6 +349,8 @@ router.post("/residential", async (req, res) => {
   params.HasStructural = req.body.StructuralDescriptions;
   params.HasGarageExhaust = req.body.HasGarageExhaust;
   params.HasSiteLighting = req.body.HasSiteLighting;
+
+  params.htmlPaymentScheduleTable = await paymentScheduleTable(params);
 
   await finalize(req, res, filename, params);
 });
