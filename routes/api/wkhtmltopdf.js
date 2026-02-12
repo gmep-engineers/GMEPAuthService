@@ -313,7 +313,7 @@ const setScopeDepartmentListParams = function (params) {
     ScopeDepartmentList.push("plumbing");
   }
 
-  params.ScopeDepartmentList = [];
+  params.ScopeDepartmentList = "";
 
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
@@ -409,7 +409,7 @@ router.post("/commercial", async function (req, res, next) {
   if (params.PlumbingDescriptions) {
     ScopeDepartmentList.push("plumbing");
   }
-  params.ScopeDepartmentList = [];
+  params.ScopeDepartmentList = "";
 
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
@@ -541,7 +541,7 @@ router.post("/residential", async (req, res) => {
     ScopeDepartmentList.push("plumbing");
   }
 
-  params.ScopeDepartmentList = [];
+  params.ScopeDepartmentList = "";
 
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
