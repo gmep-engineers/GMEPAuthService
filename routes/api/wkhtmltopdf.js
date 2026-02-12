@@ -154,6 +154,7 @@ const getGeminiParams = function (b) {
 };
 
 const setDescriptionParams = function (projectDetails, params) {
+  console.log(projectDetails);
   const structuralDescriptions = projectDetails.structuralDescriptions;
   const mechanicalDescriptions = projectDetails.mechanicalDescriptions;
   const electricalDescriptions = projectDetails.electricalDescriptions;
@@ -333,7 +334,9 @@ router.post("/commercial2", async function (req, res, next) {
   // generate pdf
 
   const b = req.body;
+  console.log(b);
   const params = getGeminiParams(b);
+  console.log(params);
   setDescriptionParams(params);
   setFunctionParams(params);
   setScopeDepartmentListParams(params);
