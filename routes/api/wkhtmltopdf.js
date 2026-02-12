@@ -150,8 +150,9 @@ const setGeminiParams = function (b) {
   b.HasInitialRecommendationsMeeting = false;
 };
 
-const setDescriptionParams = function (projectDetails, params) {
-  console.log(projectDetails);
+const setDescriptionParams = function (params) {
+  const projectDetails = params.project_details;
+  console.log("projectdetails", projectDetails);
   const structuralDescriptions = projectDetails.structuralDescriptions;
   const mechanicalDescriptions = projectDetails.mechanicalDescriptions;
   const electricalDescriptions = projectDetails.electricalDescriptions;
@@ -331,11 +332,13 @@ router.post("/commercial2", async function (req, res, next) {
   // generate pdf
 
   const params = req.body;
-  console.log(params);
+  console.log("origina", params);
   setGeminiParams(params);
-  console.log(params);
+  console.log("gemini", params);
   setDescriptionParams(params);
+  console.log("description", params);
   setFunctionParams(params);
+  console.log("function", params);
   setScopeDepartmentListParams(params);
   if (params.ScopeDepartmentList.length === 0) {
     return res.status(400).send({ error: "scope department list empty" });
