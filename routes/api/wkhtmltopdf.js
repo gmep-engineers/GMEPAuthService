@@ -153,10 +153,10 @@ const setGeminiParams = function (b) {
 const setDescriptionParams = function (params) {
   const projectDetails = params.project_details;
   console.log("projectdetails", projectDetails);
-  const structuralDescriptions = projectDetails.structuralDescriptions;
-  const mechanicalDescriptions = projectDetails.mechanicalDescriptions;
-  const electricalDescriptions = projectDetails.electricalDescriptions;
-  const plumbingDescriptions = projectDetails.plumbingDescriptions;
+  const structuralDescriptions = projectDetails.structural_descriptions;
+  const mechanicalDescriptions = projectDetails.mechanical_descriptions;
+  const electricalDescriptions = projectDetails.electrical_descriptions;
+  const plumbingDescriptions = projectDetails.plumbing_descriptions;
   var structuralDescriptionsStr = "";
   var mechanicalDescriptionsStr = "";
   var electricalDescriptionsStr = "";
