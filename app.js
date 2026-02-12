@@ -7,6 +7,7 @@ var userRouter = require("./routes/api/user");
 var sessionRouter = require("./routes/api/session");
 var wkhtmltopdfRouter = require("./routes/api/wkhtmltopdf");
 var netsuiteRouter = require("./routes/api/netsuite");
+const cors = require("cors");
 
 var app = express();
 
