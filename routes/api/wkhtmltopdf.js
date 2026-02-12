@@ -152,7 +152,6 @@ const setGeminiParams = function (b) {
 
 const setDescriptionParams = function (params) {
   const projectDetails = params.project_details;
-  console.log("projectdetails", projectDetails);
   const structuralDescriptions = projectDetails.structural_descriptions;
   const mechanicalDescriptions = projectDetails.mechanical_descriptions;
   const electricalDescriptions = projectDetails.electrical_descriptions;
@@ -332,13 +331,9 @@ router.post("/commercial2", async function (req, res, next) {
   // generate pdf
 
   const params = req.body;
-  console.log("origina", params);
   setGeminiParams(params);
-  console.log("gemini", params);
   setDescriptionParams(params);
-  console.log("description", params);
   setFunctionParams(params);
-  console.log("function", params);
   setScopeDepartmentListParams(params);
   if (params.ScopeDepartmentList.length === 0) {
     return res.status(400).send({ error: "scope department list empty" });
@@ -412,6 +407,7 @@ router.post("/commercial", async function (req, res, next) {
   if (params.PlumbingDescriptions) {
     ScopeDepartmentList.push("plumbing");
   }
+  params.ScopeDepartmentList = [];
 
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
