@@ -344,6 +344,7 @@ router.post("/commercial2", async function (req, res, next) {
     return res.status(400).send({ error: "scope department list empty" });
   }
   params.htmlPaymentScheduleTable = await paymentScheduleTable(params);
+  var filename = "commercial-proposal-template.ejs";
 
   await finalize(req, res, filename, params);
 });
