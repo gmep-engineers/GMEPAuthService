@@ -313,6 +313,8 @@ const setScopeDepartmentListParams = function (params) {
     ScopeDepartmentList.push("plumbing");
   }
 
+  params.ScopeDepartmentList = [];
+
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
   } else if (ScopeDepartmentList.length === 2) {
@@ -538,6 +540,8 @@ router.post("/residential", async (req, res) => {
   if (params.PlumbingDescriptions) {
     ScopeDepartmentList.push("plumbing");
   }
+
+  params.ScopeDepartmentList = [];
 
   if (ScopeDepartmentList.length === 1) {
     params.ScopeDepartmentList = ScopeDepartmentList[0];
