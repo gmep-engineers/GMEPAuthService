@@ -125,32 +125,29 @@ const formatPhone = function (phone) {
   }
 };
 
-const getGeminiParams = function (b) {
-  const params = {
-    NewConstruction: b.project_details.project_type === "New Construction",
-    ProjectName: b.project_details.name,
-    ProjectAddress: b.project_details.address,
-    Client: b.parties.client.business_name,
-    Architect: b.parties.architect.name,
-    DateSent: b.project_details.timeline.date_sent,
-    DateDrawingsReceived: b.project_details.timeline.date_drawings_received,
-    ProjectDescriptions: b.project_details.description,
-    TotalPrice: b.financial_provisions.total_fee.amount,
-    BudgetedAdminHours: b.administration_details.coordination_hours,
-    MaxAdminHours: b.administration_details.ca_hours,
-    ClientType: b.parties.client.loyalty_tier.toLowerCase(),
-    HasSiteVisit: b.project_details.features.site_visit,
-    RetainerPercent: b.financial_provisions.retainer_percentage,
-    ClientContactName: b.parties.client.contact_name,
-    ClientBusinessName: b.parties.client.business_name,
-    ClientStreetAddress: b.parties.client.address.street,
-    ClientCityStateZip: `${b.parties.client.address.city}, ${b.parties.client.address.state} ${b.parties.client.address.zip_code}`,
-    ClientEmail: b.parties.client.email,
-    ClientPhone: b.parties.client.phone,
-    NumMeetings: 0,
-    HasInitialRecommendationsMeeting: false,
-  };
-  return params;
+const setGeminiParams = function (b) {
+  b.NewConstruction = b.project_details.project_type === "New Construction";
+  b.ProjectName = b.project_details.name;
+  b.ProjectAddress = b.project_details.address;
+  b.Client = b.parties.client.business_name;
+  b.Architect = b.parties.architect.name;
+  b.DateSent = b.project_details.timeline.date_sent;
+  b.DateDrawingsReceived = b.project_details.timeline.date_drawings_received;
+  b.ProjectDescriptions = b.project_details.description;
+  b.TotalPrice = b.financial_provisions.total_fee.amount;
+  b.BudgetedAdminHours = b.administration_details.coordination_hours;
+  b.MaxAdminHours = b.administration_details.ca_hours;
+  b.ClientType = b.parties.client.loyalty_tier.toLowerCase();
+  b.HasSiteVisit = b.project_details.features.site_visit;
+  b.RetainerPercent = b.financial_provisions.retainer_percentage;
+  b.ClientContactName = b.parties.client.contact_name;
+  b.ClientBusinessName = b.parties.client.business_name;
+  b.ClientStreetAddress = b.parties.client.address.street;
+  b.ClientCityStateZip = `${b.parties.client.address.city}, ${b.parties.client.address.state} ${b.parties.client.address.zip_code}`;
+  b.ClientEmail = b.parties.client.email;
+  b.ClientPhone = b.parties.client.phone;
+  b.NumMeetings = 0;
+  b.HasInitialRecommendationsMeeting = false;
 };
 
 const setDescriptionParams = function (projectDetails, params) {
@@ -333,9 +330,9 @@ router.post("/commercial2", async function (req, res, next) {
   // save client information in the database if it isn't in the database yet
   // generate pdf
 
-  const b = req.body;
-  console.log(b);
-  const params = getGeminiParams(b);
+  const params = req.body;
+  console.log(params);
+  setGeminiParams(params);
   console.log(params);
   setDescriptionParams(params);
   setFunctionParams(params);
