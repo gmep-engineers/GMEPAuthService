@@ -7,6 +7,7 @@ var userRouter = require("./routes/api/user");
 var sessionRouter = require("./routes/api/session");
 var wkhtmltopdfRouter = require("./routes/api/wkhtmltopdf");
 var netsuiteRouter = require("./routes/api/netsuite");
+var contractGenerator = require("./routes/api/contract-generator");
 const cors = require("cors");
 
 var app = express();
@@ -28,6 +29,7 @@ app.use("/api/user", userRouter);
 app.use("/api/session", sessionRouter);
 app.use("/api/wkhtmltopdf", wkhtmltopdfRouter);
 app.use("/api/netsuite", netsuiteRouter);
+app.use("/api/contract-generator", contractGenerator);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
