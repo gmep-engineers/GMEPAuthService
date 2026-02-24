@@ -416,25 +416,36 @@
             </table>
         </div>   
         <div class="t2">
-           <table>                
-                <% number = 1; %>
-                <% if (NumMeetings && NumMeetings > 0) { %>
+            <table>
+            <% number = 1; %> <% if ((NumMeetings && NumMeetings > 0) ||
+            TotalPrice > 25000) { %>
                 <tr>
                     <td><%= number.toString() %>.</td>
-                    <td>Meet 
-                        <% if (NumMeetings === 1) { %>
-                        once
-                        <% } else { %>
-                        <%= NumMeetings %> times
-                        <% } %>
-                        with the Architect, Client, and other project consultants to discuss project goals and discuss and establish Project program requirements and any other preliminary design criteria</td>
+                    <% if (!NumMeetings || NumMeetings === 0) { %>
+                    <td>
+                    Meet with the Architect, Client, and other project consultants to
+                    discuss project goals and discuss and establish Project program
+                    requirements and any other preliminary design criteria
+                    </td>
+                    <% } else { %>
+                    <td>
+                    Meet <% if (NumMeetings === 1) { %> once <% } else { %> <%=
+                    NumMeetings %> times <% } %> with the Architect, Client, and other
+                    project consultants to discuss project goals and discuss and
+                    establish Project program requirements and any other preliminary
+                    design criteria
+                    </td>
+                    <% } %>
                 </tr>
                 <% number++; } %>
                 <tr>
                     <td><%= number.toString() %>.</td>
-                    <td class="t1-title-text-td">Visit the site to visually observe existing spaces and discuss utility requirements</td>
+                    <td>
+                    Visit the site to visually observe existing spaces and discuss
+                    utility requirements
+                    </td>
                 </tr>
-                <% number++; %>   
+                <% number++; %>
                 <tr>
                     <td><%= number.toString() %>.</td>
                     <td>Deliverables:</td>

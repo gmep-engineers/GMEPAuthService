@@ -157,9 +157,17 @@
       </div>
       <div class="t2">
         <table>
-          <% number = 1; %> <% if (NumMeetings && NumMeetings > 0) { %>
+          <% number = 1; %> <% if ((NumMeetings && NumMeetings > 0) ||
+          TotalPrice > 25000) { %>
           <tr>
             <td><%= number.toString() %>.</td>
+            <% if (!NumMeetings || NumMeetings === 0) { %>
+            <td>
+              Meet with the Architect, Client, and other project consultants to
+              discuss project goals and discuss and establish Project program
+              requirements and any other preliminary design criteria
+            </td>
+            <% } else { %>
             <td>
               Meet <% if (NumMeetings === 1) { %> once <% } else { %> <%=
               NumMeetings %> times <% } %> with the Architect, Client, and other
@@ -167,6 +175,7 @@
               establish Project program requirements and any other preliminary
               design criteria
             </td>
+            <% } %>
           </tr>
           <% number++; } %>
           <tr>
